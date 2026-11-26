@@ -1,36 +1,46 @@
-% Layout follows Revista de la Union Matematica Argentina, Information for Authors.
-% https://revistas.uns.edu.ar/revuma/information/authors
-\documentclass[10pt,reqno]{amsart}
-\usepackage{amssymb,geometry}
-\geometry{paperwidth=176mm,paperheight=250mm,textheight=189mm,tmargin=35mm,
-  lmargin=30mm,rmargin=20mm,headsep=8mm,headheight=11pt,footskip=30pt,twoside=true}
+\documentclass[11pt,letterpaper]{article}
+\usepackage{amsmath,amsthm,amssymb,geometry}
+\geometry{margin=1.15in}
 \usepackage[hidelinks]{hyperref}
-\newtheorem{theorem}{Theorem}[section]
+\newcommand{\papertitle}{Autonomous proofs of the rank cases of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra}
+\hypersetup{pdftitle={\papertitle},pdfauthor={Renrui Chen},
+  pdfkeywords={minimizing Sard conjecture, sub-Riemannian geometry, automated theorem proving, Lean 4, GPT-6.2 Astra}}
+\newcounter{proofgroup}
+\setcounter{proofgroup}{1}
+\newtheorem{theorem}{Theorem}[proofgroup]
+\newcommand{\proofsection}[1]{\stepcounter{proofgroup}\subsection{#1}}
+\setlength{\emergencystretch}{1em}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newcommand{\R}{\mathbb R}
 \newcommand{\im}{\operatorname{im}}
 \newcommand{\rank}{\operatorname{rank}}
 \begin{document}
-\title[Minimizing Sard in dimension five]{The fixed-source minimizing Sard property\\ in dimension five}
-% Author, affiliation, and contact address to be supplied by the authors.
+\title{\papertitle\thanks{Project repository: \url{https://github.com/Ch-RR/minimizing-sard-five}.}}
+\author{Renrui Chen}
 \date{November 26, 2026}
-\subjclass[2020]{Primary 53C17; Secondary 49K15, 93B05}
-\keywords{Sub-Riemannian distance, singular minimizing curves, endpoint map, second variation}
+\begingroup
+\renewcommand{\textasteriskcentered}{\ensuremath{\ast}}
+\maketitle
+\endgroup
 \begin{abstract}
-For a smooth bracket-generating distribution of constant rank on a five-dimensional
-manifold with a smooth horizontal metric, we prove that the set of endpoints of
-singular length minimizers from each fixed point has zero smooth outer volume.
+We describe a human-directed proof development with GPT-6.2 Astra in OpenAI's
+Codex for the five-dimensional minimizing Sard conjecture. For a smooth
+bracket-generating distribution of constant rank with a smooth horizontal
+metric, we prove that the endpoints of singular length minimizers from each
+fixed point form a set of zero smooth outer volume.
 In the rank-two case the difficult endpoint differential has a two-dimensional
 cokernel. A finite-rank argument for its second variation identifies a bracket
 direction that can be straightened independently of the minimizing control.
 Taylor expansion and a local horizontal correction then produce two-dimensional
 regions of strict descent for the distance. An anisotropic differentiation
 argument excludes these regions at almost every endpoint. The result concerns
-attained minima and requires no completeness assumption.
+attained minima and requires no completeness assumption. The three horizontal
+rank cases share one formal proof. We release the Lean sources and the
+verification record for 150 project modules in Lean 4.24.0.
 \end{abstract}
-\maketitle
-\section{Statement and outline}
+\section{Introduction}
+\paragraph{The fixed-source problem.}
 Let $M$ be connected, Hausdorff, second countable and without boundary.
 In a smooth local frame $(X_i)_{i=1}^m$ of the smooth subbundle $\Delta$, write
 \[
@@ -59,7 +69,8 @@ For each $x\in M$ and each smooth positive density $\mu$ on $M$,
 \]
 \end{theorem}
 The quantifier over minimizing curves includes endpoints shared by regular and
-singular minimizers. The exceptional set may depend on the source. Rifford
+singular minimizers. The exceptional set may depend on the source.
+\paragraph{Related work.} Rifford
 \cite{rifford} obtains the minimizing Sard property under an almost-everywhere
 Goh-rank condition and, in particular, for distributions of corank at most
 two in the complete setting of that paper. A rank-two distribution in dimension
@@ -67,7 +78,7 @@ five has corank three. In dimension three the strong Sard theorem of
 Belotto da Silva, Figalli, Parusi\'nski and Rifford \cite{strong} covers even
 nonminimizing singular curves for analytic structures.
 
-For a minimizing control $u$ write $A=DG(u)$ and let $\mathcal S(u)$ denote
+\paragraph{Our contribution.} For a minimizing control $u$ write $A=DG(u)$ and let $\mathcal S(u)$ denote
 the support condition of Lemma~\ref{support}. The proof splits as follows
 outside the growth exception and the source:
 \[
@@ -81,9 +92,95 @@ outside the growth exception and the source:
 \]
 The null sets are chosen before $u$. Lemma~\ref{two-point} supplies
 $V<\infty$ and $V\in C^0(M)$ wherever the measure lemmas below are applied.
-\section{A measure lemma for strict descent}\label{measure}
+\section{Agent}
+\paragraph{Setting.} Renrui Chen directed the investigation, specified the
+fixed-source target and required the argument to retain the original
+hypotheses. GPT-6.2 Astra operated through OpenAI's Codex with access to
+research literature, working drafts and a local Lean installation.
+Here autonomy refers to the agent generating mathematical arguments
+and proof scripts within assigned tasks. The record is one interactive
+investigation with human steering.
+
+Two instructions from the author illustrate the interaction (translated from
+Chinese): \textit{Do not simplify the problem or add unnecessary hypotheses}
+and \textit{First formally verify the five-dimensional theorem}. The author
+also supplied a research packet assembled by another AI and asked the agent
+to check its suggestions critically.
+
+\paragraph{Construction.} The agent investigated control variations that
+shorten a path while moving its endpoint only at higher order. In the
+rank-two branch it developed the argument identifying a line in the
+two-dimensional cokernel (Proposition~\ref{line}). It then bounded the
+cost of correcting the remaining endpoint error (Proposition~\ref{two-missing}).
+The author requested the complete five-dimensional statement and directed the
+agent to follow the earlier draft when a proposed shortcut stalled.
+
+\paragraph{Review and formalization.} One proposed shortcut would have
+replaced an anisotropic rectangle by a single ray at all scales. For
+weights $(2,4)$ the available displacements can instead satisfy
+$X>0$ and $X^2/4<Y<2X^2$. No fixed ray meets these boxes arbitrarily near
+zero. The argument combines increments at several scales (Lemma~\ref{box}).
+Codex wrote and revised the Lean declarations and proof scripts using
+compiler feedback and drafted the manuscript. The author requested
+explicit quantifiers, uniform estimates and the scope of the formal checks.
+
+Huang's sum-product study~\cite{huang} reports independent trials of
+a proof-generation agent. The data here describe artifacts from a single
+investigation; a success rate and a per-trial token cost were not measured.
+
+\section{Verification results}
+The three rank cases share lemmas and one final formal target.
+\[
+\begin{array}{l|l}
+\text{check} & \text{recorded outcome}\\ \hline
+\text{toolchain} & \text{Lean 4.24.0, mathlib v4.24.0}\\
+\text{frozen project} & 150\text{ modules},\ 2602\text{ safe declarations replayed}\\
+\text{skipped recursive auxiliaries} &5;\quad 0\text{ in the target's dependency closure}\\
+\text{target axiom dependencies} &\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}
+\end{array}
+\]
+\paragraph{What was checked.}
+The target in \texttt{FiveDimensionalMinimizingSard.lean} is
+\begin{center}\small\ttfamily five\_dimensional\_metric\_minimizing\_sard\end{center}
+The formal path derivative is the native manifold derivative. In geometric
+notation its data include
+\[
+ \begin{gathered}
+ E_x(\gamma)=\gamma(1),\qquad
+ \text{singular}\iff D_\gamma E_x\text{ is not onto},\\
+ g_{ij}:y\mapsto g_y(X_i(y),X_j(y)),\qquad g_{ij}\in C^\infty,\\
+ \mu(\chi^{-1}B)=\int_B\rho_\chi\,dz\quad(B\text{ Borel in the chart}),\\
+ L(\gamma)=\int|\dot\gamma|_g,\qquad d(x,y)=\inf_{E_x(\beta)=y}L(\beta).
+ \end{gathered}
+\]
+For the wider intermediate statements, the corresponding scopes are
+\[
+ \begin{array}{c|l|l}
+  &\text{paper}&\text{formal application}\\ \hline
+ \text{Lemma~\ref{box}} & d<\infty,\ k_i>1 &d=2,\ k_i\in\mathbb N,\ k_i\ge2\\
+ \text{Lemma~\ref{planes}} & k,l>1&\R^3\times\R^2,\ k,l\in\mathbb N_{\ge2}\\
+ \text{Lemma~\ref{scaled-box}} &d<\infty,\ k_i\in\mathbb N_{\ge2}
+       &(2,2),(2,3),\ \text{scalar inversion}\\
+ \text{Lemma~\ref{flags}} & m=2,\ \gamma\text{ nonconstant}
+       &m=2,\ x\ne y\quad(D_3)\\
+ \text{Lemma~\ref{two-point}} &1\le r<\infty &1\le r\le4
+ \end{array}
+\]
+The fixed-prefix formula in Lemma~\ref{flags} covers nonconstant loops.
+The archive includes the module and declaration references in the formula
+audit, the source hashes, and the replay instructions in the ancillary README.
+A supplementary module checks Proposition~\ref{two-missing} without using
+the final minimizing Sard theorem. The repository gives commands to compile
+the modules, replay the declarations and run the supplementary checks.
+
+\section{Proof analysis}
+We give the full argument below. The lemma and proposition numbers are
+stable identifiers shared with the companion audit. Horizontal rank one
+is excluded by bracket generation. For ranks two, three and four, the
+final case split appears in the proof of Theorem~\ref{main}.
+\proofsection{A measure lemma for strict descent}\label{measure}
 \input{density}
-\section{The endpoint in control coordinates}\label{controls}
+\proofsection{The endpoint in control coordinates}\label{controls}
 Fix a finite subdivision and an orthonormal frame $X_i^j$ on each buffered
 piece. Rescale each piece to $[0,1]$. In terminal coordinates,
 \[
@@ -142,8 +239,8 @@ Composition on buffered tubes is smooth in $C^0$ and multiplication
 $C^0\times L^2\to L^2$ is continuous bilinear. The reverse formula and
 uniqueness of the ODE give mutually inverse smooth transitions.
 
-For later use, let $\eta_h$ be the state variation induced by $u+\epsilon h$
-and set $B(t)=\sum_i u_i(t)DX_i(q(t))$ in each chart. Differentiating the
+Let $\eta_h$ denote the state variation along $u+\epsilon h$.
+Set $B(t)=\sum_i u_i(t)DX_i(q(t))$ in each chart. Differentiating the
 integral equation gives
 \begin{equation}\label{linearstate}
  \dot\eta_h(t)=B(t)\eta_h(t)+\sum_i h_i(t)X_i(q(t)),\qquad \eta_h(0)=0 .
@@ -315,7 +412,7 @@ test of Lemma~\ref{planes}. Take the finite union over complementary axis
 choices in each chart and the countable union over charts. The continuity
 of $V$ used here follows from Lemma~\ref{two-point}.
 \end{proof}
-\section{Terminal brackets and the intrinsic Hessian}\label{brackets}
+\proofsection{Terminal brackets and the intrinsic Hessian}\label{brackets}
 \input{growth}
 For two frames $X$ and $\widetilde X=UX$, $U\in GL_m(C^\infty)$, use
 \[
@@ -566,7 +663,7 @@ component has infinite rank. For $0\ne p\in L^\perp$ in the quotient dual,
 Together with $\dim D_3(y)\ge4$ this gives $D_3(y)=\pi^{-1}L$.
 \end{proof}
 
-\section{Uniform two-point correction}\label{repair}
+\proofsection{Uniform two-point correction}\label{repair}
 \begin{lemma}[Uniform horizontal correction]\label{two-point}
 If a basis of $T_yM$ consists of values of bracket words in a local
 orthonormal frame of orders at most $r$, all pairs $z,z'$ in one
@@ -588,7 +685,7 @@ All points are accessible from $x$. The triangle inequality gives
 $|V(z)-V(z')|\le d(z,z')$, proving continuity by \eqref{connector}.
 \end{proof}
 
-\section{Two missing endpoint directions}\label{two}
+\proofsection{Two missing endpoint directions}\label{two}
 \begin{lemma}[Countable straightening charts]\label{straighten}
 There is a countable collection of target charts, fixed by the distribution
 and metric, with the following property. At a point satisfying
@@ -847,7 +944,7 @@ Lemma~\ref{planes} again puts $y$ in $N_{x,3}$, a contradiction.
 This exhausts the two horizontal ranks in the proposition.
 \end{proof}
 
-\section{Critical normal parameters and completion of the proof}
+\proofsection{Critical normal parameters and completion of the proof}
 \begin{lemma}[Supported singular paths give critical normal parameters]\label{normal}
 Endpoints of supported singular minimizers from $x$ form a set of zero
 smooth outer volume.
@@ -971,40 +1068,6 @@ By outer subadditivity,
 \]
 \end{proof}
 
-\section*{Formal proof and provenance}
-The manuscript and Lean development were prepared with AI assistance.
-The target in \texttt{FiveDimensionalMinimizingSard.lean} is
-\begin{center}\small\ttfamily five\_dimensional\_metric\_minimizing\_sard\end{center}
-The formal path derivative is the native manifold derivative. In geometric
-notation its data include
-\[
- \begin{gathered}
- E_x(\gamma)=\gamma(1),\qquad
- \text{singular}\iff D_\gamma E_x\text{ is not onto},\\
- g_{ij}:y\mapsto g_y(X_i(y),X_j(y)),\qquad g_{ij}\in C^\infty,\\
- \mu(\chi^{-1}B)=\int_B\rho_\chi\,dz\quad(B\text{ Borel in the chart}),\\
- L(\gamma)=\int|\dot\gamma|_g,\qquad d(x,y)=\inf_{E_x(\beta)=y}L(\beta).
- \end{gathered}
-\]
-For the wider intermediate statements, the corresponding scopes are
-\[
- \begin{array}{c|l|l}
-  &\text{paper}&\text{formal application}\\ \hline
- \text{Lemma~\ref{box}} & d<\infty,\ k_i>1 &d=2,\ k_i\in\mathbb N,\ k_i\ge2\\
- \text{Lemma~\ref{planes}} & k,l>1&\R^3\times\R^2,\ k,l\in\mathbb N_{\ge2}\\
- \text{Lemma~\ref{scaled-box}} &d<\infty,\ k_i\in\mathbb N_{\ge2}
-       &(2,2),(2,3),\ \text{scalar inversion}\\
- \text{Lemma~\ref{flags}} & m=2,\ \gamma\text{ nonconstant}
-       &m=2,\ x\ne y\quad(D_3)\\
- \text{Lemma~\ref{two-point}} &1\le r<\infty &1\le r\le4
- \end{array}
-\]
-The fixed-prefix formula in Lemma~\ref{flags} covers nonconstant loops.
-The archive includes the module and declaration references in the formula
-audit, the source hashes, and the replay instructions in the ancillary README.
-The frozen run records $150$ modules, $2602$ checked safe declarations,
-and $5$ skipped recursive auxiliary implementations.
-
 \begin{thebibliography}{9}
 \bibitem{strong}
 A. Belotto da Silva, A. Figalli, A. Parusi\'nski and L. Rifford,
@@ -1012,6 +1075,9 @@ Strong Sard conjecture and regularity of singular minimizing geodesics
 for analytic sub-Riemannian structures in dimension 3,
 \emph{Invent. Math.} \textbf{229} (2022), 395--448.
 \href{https://doi.org/10.1007/s00222-022-01111-2}{doi:10.1007/s00222-022-01111-2}.
+\bibitem{huang}
+Y. Huang, Autonomous disproofs of the sum-product conjecture over
+$\mathbb R$ with GPT-5.5 Pro, \href{https://arxiv.org/abs/2607.20525}{arXiv:2607.20525} (2026).
 \bibitem{jean}
 F. Jean, Uniform estimation of sub-Riemannian balls,
 \emph{J. Dynam. Control Systems} \textbf{7} (2001), 473--500.

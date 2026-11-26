@@ -1,4 +1,6 @@
-# The fixed-source minimizing Sard property in dimension five
+# Autonomous proofs of the rank cases of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra
+
+**Renrui Chen**
 
 [中文导读](README.zh-CN.md) · [Read the paper (PDF)](paper/minimizing-sard-five.pdf) · [Proof audit](audit/minimizing-sard-five-audit.pdf) · [Lean theorem](lean/FiveDimensionalMinimizingSard.lean#L75)
 
@@ -22,11 +24,11 @@ Rifford's Theorem 1.1 establishes the minimizing Sard property for complete stru
 
 ## Read the proof
 
-1. Section 4 identifies a bracket-defined line in the two missing endpoint directions of the difficult rank-two branch.
-2. Sections 5–6 bound the cost of endpoint corrections and obtain entire rectangles of nearby endpoints at lower cost.
-3. Section 2 shows that base points of such anisotropic descent rectangles form a null set. Section 7 treats the supported branch and assembles the conclusion.
+1. Section 4.3 identifies a bracket-defined line in the two missing endpoint directions of the difficult rank-two branch.
+2. Sections 4.4–4.5 bound the cost of endpoint corrections and obtain entire rectangles of nearby endpoints at lower cost.
+3. Section 4.1 shows that base points of such anisotropic descent rectangles form a null set. Section 4.6 treats the supported branch and assembles the conclusion.
 
-To examine the rank-two argument, start with Proposition 4.4 on p. 13 and Proposition 6.3 on pp. 16–19 of the [paper](paper/minimizing-sard-five.pdf). The [audit](audit/minimizing-sard-five-audit.pdf) maps the numbered paper results to Lean declarations and records the scope of the formal instances. The proof of the common-null-set statement also has a [separate Lean check](lean/Proposition63.lean).
+To examine the rank-two argument, start with Proposition 4.4 and Proposition 6.3 of the [paper](paper/minimizing-sard-five.pdf). The [audit](audit/minimizing-sard-five-audit.pdf) maps the numbered paper results to Lean declarations and records the scope of the formal instances. The proof of the common-null-set statement also has a [separate Lean check](lean/Proposition63.lean).
 
 ## Reproduce the check
 
@@ -41,4 +43,4 @@ lake env python3 check.py
 
 Use `python` if that is your Python executable. The first build downloads dependencies. The [verification script](lean/check.py) checks source hashes, compiles the 150 frozen project modules, replays their safe declarations, and checks two supplementary audit files. See the [archived replay record](audit/README.md).
 
-The mathematical work, Lean development and manuscript were prepared with AI assistance. To report a discrepancy, include the paper statement number, Lean declaration and the step in question.
+Renrui Chen directed the investigation and specified the proof target. GPT-6.2 Astra, used through OpenAI’s Codex, developed the mathematical arguments, wrote and revised the Lean formalization, and drafted the manuscript. To report a discrepancy, include the paper statement number, Lean declaration and the step in question.
