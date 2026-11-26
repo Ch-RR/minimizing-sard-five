@@ -1,6 +1,6 @@
 # An autonomous proof of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra
 
-**Renrui Chen**
+**Renrui Chen** · [2470521716@qq.com](mailto:2470521716@qq.com)
 
 [中文导读](README.zh-CN.md) · [Read the paper (PDF)](paper/minimizing-sard-five.pdf) · [Proof audit](audit/minimizing-sard-five-audit.pdf) · [Lean theorem](lean/FiveDimensionalMinimizingSard.lean#L75)
 

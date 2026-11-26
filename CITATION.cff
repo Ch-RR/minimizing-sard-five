@@ -4,6 +4,7 @@ title: "An autonomous proof of the minimizing Sard conjecture in dimension five 
 authors:
   - family-names: Chen
     given-names: Renrui
+    email: "2470521716@qq.com"
 repository-code: "https://github.com/Ch-RR/minimizing-sard-five"
 preferred-citation:
   type: unpublished
@@ -11,5 +12,6 @@ preferred-citation:
   authors:
     - family-names: Chen
       given-names: Renrui
+      email: "2470521716@qq.com"
   year: 2026
   url: "https://github.com/Ch-RR/minimizing-sard-five"
