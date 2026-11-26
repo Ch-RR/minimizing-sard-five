@@ -1,4 +1,4 @@
-# 使用 GPT-6.2 Astra 自主证明五维极小化 Sard 猜想的各秩情形
+# 使用 GPT-6.2 Astra 自主证明五维极小化 Sard 猜想
 
 **Renrui Chen**
 
@@ -35,10 +35,11 @@ Rifford 的定理 1.1 在完备性和几乎处处 Goh 秩至多为一的条件�
 
 ```sh
 cd lean
-lake update
 lake exe cache get
 lake env python check.py
 ```
+
+下载缓存后也可在该目录执行 `lake build`，用编辑器打开 `lean/` 即可浏览证明。[声明索引](lean/AuditAnchors.lean)列出复核稿引用的 Lean 名称。[自动核验记录](https://github.com/Ch-RR/minimizing-sard-five/actions/workflows/verify.yml)还检查主定理的公理依赖和跳过项。
 
 如果你的系统使用命令 `python3`，最后一行改用 `lake env python3 check.py`。脚本核对 150 个模块的 SHA-256，按依赖顺序编译，运行内核重检，最后检查两个补充审计文件。[重检记录与口径](audit/README.md)
 

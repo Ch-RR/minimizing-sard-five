@@ -1,4 +1,4 @@
-# Autonomous proofs of the rank cases of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra
+# An autonomous proof of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra
 
 **Renrui Chen**
 
@@ -30,16 +30,19 @@ Rifford's Theorem 1.1 establishes the minimizing Sard property for complete stru
 
 To examine the rank-two argument, start with Proposition 4.4 and Proposition 6.3 of the [paper](paper/minimizing-sard-five.pdf). The [audit](audit/minimizing-sard-five-audit.pdf) maps the numbered paper results to Lean declarations and records the scope of the formal instances. The proof of the common-null-set statement also has a [separate Lean check](lean/Proposition63.lean).
 
+The [declaration index](lean/AuditAnchors.lean) lists the Lean names used in the paper audit. For the formal statement, open the [main theorem](lean/FiveDimensionalMinimizingSard.lean#L75).
+
 ## Reproduce the check
 
 Install Git, [elan](https://github.com/leanprover/elan), and Python 3.8+. Run from the repository root:
 
 ```sh
 cd lean
-lake update
 lake exe cache get
 lake env python3 check.py
 ```
+
+For an ordinary Lake build, run `lake build` in the same directory after fetching the cache. Open `lean/` as the editor workspace. The [CI workflow](.github/workflows/verify.yml) also checks the target’s axiom dependencies and the skipped-declaration audit. [View runs](https://github.com/Ch-RR/minimizing-sard-five/actions/workflows/verify.yml).
 
 Use `python` if that is your Python executable. The first build downloads dependencies. The [verification script](lean/check.py) checks source hashes, compiles the 150 frozen project modules, replays their safe declarations, and checks two supplementary audit files. See the [archived replay record](audit/README.md).
 

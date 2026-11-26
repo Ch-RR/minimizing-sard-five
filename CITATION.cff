@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "Please cite the manuscript by Renrui Chen and include the Git commit when referring to the Lean proof."
-title: "Autonomous proofs of the rank cases of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra"
+title: "An autonomous proof of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra"
 authors:
   - family-names: Chen
     given-names: Renrui
 repository-code: "https://github.com/Ch-RR/minimizing-sard-five"
 preferred-citation:
   type: unpublished
-  title: "Autonomous proofs of the rank cases of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra"
+  title: "An autonomous proof of the minimizing Sard conjecture in dimension five with GPT-6.2 Astra"
   authors:
     - family-names: Chen
       given-names: Renrui

@@ -1,0 +1,34 @@
+name: Verify Lean proof
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: lean
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          auto-config: "false"
+          use-github-cache: "false"
+          use-mathlib-cache: "false"
+      - name: Fetch imported mathlib modules and their dependencies
+        run: |
+          mapfile -t modules < <(awk '/^import Mathlib[.]/ {print $2}' *.lean | tr -d '\r' | sort -u)
+          lake exe cache get "${modules[@]}"
+      - name: Compile frozen sources and replay the proof
+        run: lake env python3 check.py
+      - name: Check the final theorem's axioms and skipped declarations
+        run: |
+          lake env lean --run ../audit/InspectSkipped.lean .proof-build
+          lake env sh -c 'LEAN_PATH=".proof-build:$LEAN_PATH" lean ../audit/TargetAxioms.lean'
