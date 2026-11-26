@@ -1,6 +1,6 @@
 # 使用 GPT-6.2 Astra 自主证明五维极小化 Sard 猜想
 
-**Renrui Chen** · [2470521716@qq.com](mailto:2470521716@qq.com)
+**Renrui Chen**
 
 [English](README.md) · [论文全文](paper/minimizing-sard-five.pdf) · [逐条复核 · 8 页](audit/minimizing-sard-five-audit.pdf) · [Lean 主定理](lean/FiveDimensionalMinimizingSard.lean#L75)
 
