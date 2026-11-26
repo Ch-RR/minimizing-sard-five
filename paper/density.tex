@@ -1,0 +1,206 @@
+In fixed linear coordinates on $\mathbb R^d$ let
+$\delta_r v=(r^{k_i}v_i)_{i=1}^d$, with arbitrary fixed real
+$k_i>1$. A thin anisotropic open box need not contain any straight
+ray, even when all of its small dilates are available. For example, let
+$d=2$, $k=(2,4)$ and $U=(1,2)^2$. A displacement $(X,Y)\in\delta_r U$
+then satisfies
+\[
+ r^2<X<2r^2,\quad r^4<Y<2r^4,\qquad
+ \tfrac14 X^2<Y<2X^2 .
+\]
+No fixed straight ray contains such displacements arbitrarily near zero:
+on a ray with $X>0$ the ratio $Y/X$ is constant, whereas here it is
+positive and tends to zero. To apply a one-dimensional differentiation
+theorem we therefore construct a curve whose increments can be assembled
+from the available boxes.
+
+\begin{lemma}[One-sided infinite descent]\label{one-sided}
+For a finite right-continuous function $g$ on an open interval $I$,
+the set of $t$ with
+$\limsup_{h\downarrow0}(g(t+h)-g(t))/h=-\infty$ has outer measure zero.
+\end{lemma}
+\begin{proof}
+Write $D^+g(t)=\limsup_{h\downarrow0}(g(t+h)-g(t))/h$. For $j,n\ge1$ let
+\[
+ E_{j,n}=\left\{t:
+ \begin{array}{l}
+ [t,t+1/j]\subset I,\quad |g(t)|\le n,\\
+ g(t+h)-g(t)\le-h\quad(0<h<1/j)
+ \end{array}\right\}.
+\]
+Right continuity permits testing $h\in\mathbb Q$ and gives
+$E_{j,n}$ Borel. Also $\{D^+g=-\infty\}\subset\bigcup_{j,n}E_{j,n}$.
+Cover $I$ by countably many intervals $J$ of diameter $<1/j$. For $E=J\cap E_{j,n}$,
+\[
+ s,t\in E,\ s>t\ \Longrightarrow\ g(s)\le g(t)-(s-t);
+ \qquad G(t)=\sup(\{-n\}\cup g(E\cap[t,\infty))).
+\]
+Thus $G$ is bounded, nonincreasing and $G|_E=g|_E$. At almost every
+$t\in E$, $t$ is a density point of $E$ and $G'(t)\in\R$. Choose
+$t_i\in E$ decreasing strictly to $t$. Then
+\[
+ D^+g(t)\ge\lim_{i\to\infty}\frac{g(t_i)-g(t)}{t_i-t}
+       =\lim_{i\to\infty}\frac{G(t_i)-G(t)}{t_i-t}=G'(t)>-\infty .
+\]
+Consequently $|E\cap\{D^+g=-\infty\}|^*=0$ for every $j,n,J$.
+\end{proof}
+
+\begin{lemma}[Anisotropic descent boxes]\label{box}
+For continuous $V$ on an open set, the following base points $z$
+form a set of Lebesgue outer measure zero. There are a nonempty
+open box $U$, $c>0$ and $r_0>0$ such that for $0<r<r_0$,
+\[
+          V(z+\delta_r b)\le V(z)-cr \qquad(b\in U).
+\]
+Countably many adapted coordinate systems, translations, and
+weight lists may be used. This includes arbitrarily narrow boxes.
+\end{lemma}
+\begin{proof}
+By shrinking use rational $c,r_0$ and
+$U=a+(-e,e)^d$ with rational $a,e$. Work on buffered subcharts,
+extending $V$ continuously locally via cutoffs when needed.
+With $\mathcal R=(0,r_0)\cap\mathbb Q$ and $\mathcal B=U\cap\mathbb Q^d$,
+continuity gives the Borel test
+\[
+ E=\bigcap_{r\in\mathcal R,\ b\in\mathcal B}
+       \{z: V(z+\delta_r b)-V(z)\le-cr\}.
+\]
+For $\kappa=\sum_i k_i$ define
+\[
+ d_k(z,w)=\max_i |z_i-w_i|^{1/k_i},\quad B_r(z)=z+\delta_r(-1,1)^d,\quad
+ |B_{2r}(z)|=2^\kappa|B_r(z)|.
+\]
+Each coordinate satisfies the triangle inequality since $1/k_i<1$.
+Lebesgue differentiation for this doubling ball basis gives, for almost every $z\in E$,
+\[
+ \lim_{r\downarrow0}\frac{|B_r(z)\setminus E|}{2^d r^\kappa}=0 .
+\]
+For fixed $\epsilon,C>0$, a center $w\in B_{Cr}(z)$ satisfies
+$B_{\epsilon r}(w)\subset B_{(C+\epsilon)r}(z)$. At a density point
+\begin{equation}\label{density-hit}
+ |B_{(C+\epsilon)r}(z)\setminus E|=o(r^\kappa)
+       < 2^d\epsilon^\kappa r^\kappa=|B_{\epsilon r}(w)|.
+\end{equation}
+The threshold on $r$ is independent of $w$, so the small box meets $E$.
+
+Choose $1/\min_i k_i<\alpha<1$. In $(0,1)$ place one atom of
+vector mass $\delta_{r_j}a$, $r_j=2^{-\alpha j}$, at each dyadic
+rational of exact denominator $2^j$, $j\ge1$. If $N_j(t)$ counts those
+rationals in $(0,t]$, the cumulative sum $D$ is given coordinatewise by
+\begin{equation}\label{clock-series}
+ D_i(t)=a_i\sum_{j\ge1}N_j(t)2^{-\alpha j k_i},\qquad
+ |a_i|\sum_{j\ge1}2^{j-1}2^{-\alpha j k_i}<\infty .
+\end{equation}
+The bound is uniform in $t$, so $D$ is right-continuous. For
+$0<t<t+h<1$ let $J$ be the least order of an
+atom in $(t,t+h]$. There is exactly one atom at that order, and
+$h\le 2^{1-J}$ since the interval contains no coarser grid point.
+Put $n_m=N_{J+m}(t+h)-N_{J+m}(t)$. The spacing of the atoms gives
+\[
+ n_0=1,\qquad n_m\le1+h2^{J+m-1}\le 1+2^m\le 3\cdot 2^m .
+\]
+Fix $L$ large enough that for every $i$ the discarded tail satisfies
+\[
+ \begin{aligned}
+ |\mathrm{tail}_i|
+ &\le |a_i|\sum_{m>L}n_m r_{J+m}^{k_i}
+ \le 3|a_i|r_J^{k_i}\sum_{m>L}2^{-(\alpha k_i-1)m}
+ <e r_J^{k_i}/4 .
+ \end{aligned}
+\]
+Reorder the retained scales $s_1,\ldots,s_N$ with the largest last. Then
+\[
+ N\le3\sum_{m=0}^L2^m,\qquad 2^{-\alpha L}r_J\le s_\ell\le s_N=r_J,\qquad
+ \left|\sum_{\ell\le j}a_i s_\ell^{k_i}\right|\le N|a_i|r_J^{k_i}.
+\]
+
+At a density point $z\in E$, define $q_0=z$,
+$q_j=z+\sum_{\ell=1}^j\delta_{s_\ell}a$, and choose a fixed $\epsilon>0$ with
+\[
+ 2\epsilon^{k_i}<\tfrac14 e\,2^{-\alpha L k_i}\quad(1\le i\le d).
+\]
+The preceding partial-sum bound gives $q_j\in B_{Cr_J}(z)$ for a fixed $C$.
+By \eqref{density-hit}, for sufficiently small $r_J$ choose
+\[
+ \begin{aligned}
+ p_0&=q_0,\quad p_j\in E\cap B_{\epsilon r_J}(q_j)\quad(0<j<N),\\
+ p_N&=z+D(t+h)-D(t),\quad \eta_j=p_j-q_j,\\
+ \eta_0&=0,\quad |\eta_{j,i}|<(\epsilon r_J)^{k_i}\ (0<j<N),\quad
+ \eta_N=\mathrm{tail}.
+ \end{aligned}
+\]
+All $p_j$ for $j<N$ belong to $E$ by \eqref{density-hit}. For $j<N$,
+\[
+ |(p_j-p_{j-1})_i-s_j^{k_i}a_i|
+ \le 2(\epsilon r_J)^{k_i}< e s_j^{k_i}.
+\]
+For $j=N$ the corresponding bound is
+$e r_J^{k_i}/4+(\epsilon r_J)^{k_i}<e s_N^{k_i}$.
+Thus each increment lies in its own admissible box. The final point need
+not belong to $E$: only starting points enter the descent hypothesis.
+Summing the $N$ inequalities gives
+\begin{equation}\label{clock-sum}
+ V(z+D(t+h)-D(t))-V(z)
+ =\sum_{j=1}^N (V(p_j)-V(p_{j-1}))
+ \le -c\sum_{j=1}^N s_j\le -c r_J .
+\end{equation}
+For each fixed $t$, $J\to\infty$ as $h\downarrow0$ and
+$r_J/h\ge 2^{(1-\alpha)J-1}\to\infty$.
+
+For every translate $z_0+D(t)$ the function $V(z_0+D(t))$ is
+right-continuous and finite on a buffered chart (or use the local
+extension). Wherever $z=z_0+D(t)$ is a density point of $E$ its
+upper right Dini derivative is $-\infty$. Lemma~\ref{one-sided}
+excludes this for almost every $t$. For the more general
+Denjoy--Young--Saks alternatives see \cite[Remark 2.10]{rifford}.
+Let $E^{(1)}$ denote these density points of $E$. The incidence function
+$(z_0,t)\mapsto\mathbf1_{E^{(1)}}(z_0+D(t))$ is Borel. Its time integral
+vanishes for each $z_0$ by the preceding derivative estimate. Tonelli's
+theorem and translation invariance now give
+\begin{equation}\label{incidence}
+ \begin{aligned}
+ 0&=\int_{\R^d}\int_0^1 \mathbf1_{E^{(1)}}(z_0+D(t))\,dt\,dz_0\\
+  &=\int_0^1 |E^{(1)}-D(t)|\,dt=|E^{(1)}|.
+ \end{aligned}
+\end{equation}
+The differentiation theorem gives $|E\setminus E^{(1)}|=0$.
+Taking the countable union over the rational choices finishes the proof.
+\end{proof}
+
+\begin{lemma}[A common exceptional set for fixed planes]\label{planes}
+Fix a continuous $V:M\to\R$ and a countable collection of smooth charts.
+In each chart prescribe countably many ordered pairs $e,f$ of distinct
+coordinate axes and pairs of weights $k,l>1$. There is a Borel set $N$
+of zero smooth volume containing every point $y$ at which one of these
+choices gives an open rectangle $U$ and constants $c,r_0>0$ satisfying
+\[
+ V(y+r^k a e+r^l b f)\le V(y)-cr
+ \quad((a,b)\in U,\ 0<r<r_0).
+\]
+Addition is in the chosen chart. The rectangle and constants may depend
+on the point and on any curve witnessing the inequality.
+\end{lemma}
+\begin{proof}
+Fix a chart $\chi$, two axes and weights $(k,l)$. Cover its target by
+countably many product boxes $B$ with compact closure inside it. With a
+smooth cutoff equal to one near $\overline B$, extend the coordinate
+value to $\widetilde V\in C^0(\R^5)$. At a witness point shrink $U,r_0$
+to stay in $B$. For fixed bounded rational $U$ and positive rational $c,r_0$,
+\[
+ E_\lambda=B\cap
+ \bigcap_{\substack{(a,b)\in U\cap\mathbb Q^2\\r\in(0,r_0)\cap\mathbb Q}}
+ \{z:\widetilde V(z+r^kae+r^lbf)-\widetilde V(z)\le-cr\}.
+\]
+Continuity makes this Borel test equivalent to testing all real parameters.
+In the following display $V$ denotes the extended value. In coordinates $(w,z)\in\R^3\times\R^2$,
+\[
+ \begin{aligned}
+ (E_\lambda)_w&\subset\{z:V(w,\cdot)\text{ satisfies Lemma~\ref{box} at }z\},\\
+ |E_\lambda|_5&=\int_{\R^3}|(E_\lambda)_w|_2\,dw=0,\\
+ N&=\bigcup_{\lambda}\chi_\lambda^{-1}(E_\lambda),\quad
+ \mu(N)\le\sum_{\lambda}\int_{E_\lambda}\rho_\lambda(\zeta)\,d\zeta=0 ,
+ \end{aligned}
+\]
+where $\rho_\lambda$ is the coordinate density. The union ranges over a
+countable set; every admissible rectangle contains a rational test rectangle.
+\end{proof}

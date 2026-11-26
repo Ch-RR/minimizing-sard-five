@@ -1,0 +1,9 @@
+lean/.lake/
+lean/.proof-build/
+*.olean
+*.ilean
+__pycache__/
+*.aux
+*.log
+*.out
+.DS_Store

@@ -1,0 +1,65 @@
+Shrink nested coordinate balls so the finitely many flow words below exist
+for every base point and all sufficiently small times. In order one,
+\[
+ F_t(z)=z+tX_t(z),\quad X_t(z)=\int_0^1 X(F_{\theta t}(z))\,d\theta,\quad X_0=X .
+\]
+For the induction assume $F_s(z)=z+s^kX_s(z)$, $G_t(z)=z+t^lY_t(z)$
+with smooth coefficients. Put $H=G_t\circ F_s$, $B=F_s\circ G_t$.
+Taking differences in the spatial variable gives $H(z)-B(z)=s^kt^l R(z,s,t)$, where
+\[
+\begin{aligned}
+R={}&\int_0^1 D Y_t(z+\theta s^kX_s(z))X_s(z)\,d\theta\\
+ &-\int_0^1 D X_s(z+\theta t^lY_t(z))Y_t(z)\,d\theta .
+\end{aligned}
+\]
+With $B=F_s\circ G_t$ as above, the exact difference is
+\[
+ B^{-1}H(z)-z
+ =s^kt^l\int_0^1 DB^{-1}\big(B(z)+\theta(H(z)-B(z))\big)\,R(z,s,t)\,d\theta .
+\]
+Shrink the coordinate balls so this segment stays in the domain of $B^{-1}$.
+All coefficients are smooth and $DB^{-1}=I$ at $(s,t)=(0,0)$. Thus, on setting
+$s=t$,
+\[
+ \begin{aligned}
+ B^{-1}H(z)&=z+t^{k+l}Z(z,t),\\
+ Z(z,0)&=DY_0(z)X_0(z)-DX_0(z)Y_0(z)=[X_0,Y_0](z).
+ \end{aligned}
+\]
+
+Write any resulting word as $W_t(z)=z+t^k Z(z,t)$. Put $t=|s|^{1/k}$. For $s\ne0$ the signed displacement $D$ is
+\[
+ D(z,s)=
+ \begin{cases}
+ W_t(z)-z=s Z(z,t),&s>0,\\
+ W_t^{-1}(z)-z=s Z(W_t^{-1}(z),t),&s<0 .
+ \end{cases}
+\]
+Writing $D=sZ_\pm$ on the two sides and $D(z,0)=0$,
+\[
+ \partial_sD=Z_\pm+(t/k)\partial_tZ_\pm\to Z(z,0),\qquad
+ D_zD=sD_zZ_\pm\to0 .
+\]
+The limits are locally uniform; $D(z,s)/s\to Z(z,0)$ gives the derivative
+at zero. Thus the signed words are jointly $C^1$ even for even $k$.
+
+Compose five such signed words whose bracket values form a basis at
+$y$, of orders at most $r$. Let $F(z,s)$ be their composite endpoint minus $z$, and
+$\Psi(z,s)=(z,F(z,s))$. Writing $A=[X_{I_1}(y),\ldots,X_{I_5}(y)]$,
+\[
+ F(z,0)=0,\quad D\Psi(y,0)=
+ \begin{pmatrix}I&0\\0&A\end{pmatrix},\qquad \det A\ne0 .
+\]
+Write $\Psi^{-1}(z,w)=(z,S(z,w))$. On a smaller product of balls,
+\[
+ S(z,0)=0,\qquad
+ |S(z,w)|\le\sup\|D_wS\|\,|w|,\qquad w=z'-z .
+\]
+For $s=S(z,z'-z)$ with $|s|\le1$, and $n_i$ generator letters in word
+$i$ of order $k_i\le r$, the resulting curve has
+\[
+ \ell\le\sum_{i=1}^5 n_i |s_i|^{1/k_i}
+ \le\Big(\sum_i n_i\Big)|s|^{1/r}
+ \le\Big(\sum_i n_i\Big)(\sup\|D_w S\|)^{1/r}|z'-z|^{1/r}.
+\]
+This gives the two-point estimate.

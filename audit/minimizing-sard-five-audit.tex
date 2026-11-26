@@ -1,0 +1,475 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=23mm]{geometry}
+\usepackage{amsmath,amssymb,array,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Crit}{\operatorname{Crit}}
+\newcommand{\suppc}{\mathsf{S}}
+\newcommand{\boxd}{\mathsf{Box}}
+\newcommand{\rowhead}[2]{\par\medskip\noindent\textbf{#1}\quad\textit{#2}\par}
+\newcommand{\newpart}[1]{\clearpage\section*{#1}}
+\newcommand{\decl}[1]{{\small\ttfamily\detokenize{#1}}}
+\begin{document}
+\begin{center}
+{\LARGE Minimizing Sard in dimension five}\\[3pt]
+{\large Formula-by-formula proof audit}\\[3pt]
+26 November 2026
+\end{center}
+\rowhead{1.1}{Statement, units and quantifiers}
+\begin{align*}
+ &\dim M=5,\quad 0<m=\rk\Delta<5,\quad \Delta\subset TM,\quad
+   g\in C^\infty(\operatorname{Sym}^2\Delta^*),\quad g>0,\\
+ &D_j(y)=\operatorname{span}\{X_I(y):1\le |I|\le j\},\qquad
+              \bigcup_{j\ge1} D_j(y)=T_yM\quad(\forall y),\\
+ &\Omega_x=\{\gamma\in W^{1,2}([0,1],M):
+    \gamma(0)=x,\ \dot\gamma(t)\in\Delta_{\gamma(t)}\ \text{a.e.}\},\\
+ &E_x(\gamma)=\gamma(1),\quad L(\gamma)=\int_0^1|\dot\gamma|_g,\quad
+     V(y)=\inf_{E_x(\beta)=y}L(\beta),\\
+ &\Sigma_x=E_x\{\gamma\in\Omega_x:
+         \rk D_\gamma E_x<5,\ L(\gamma)=V(E_x\gamma)\},\\[-2pt]
+ &\boxed{\quad\forall x\in M\quad\forall\mu=\text{smooth positive density}:
+      \quad\mu^*(\Sigma_x)=0.\quad}
+\end{align*}
+$M$ connected, Hausdorff, second countable, smooth, without boundary.
+\[
+ E_x^{-1}(y)\cap\{L=V(y)\}=\varnothing\ \Longrightarrow\ y\notin\Sigma_x .
+\]
+\rowhead{2.1}{Upper right slope}
+\begin{gather*}
+ D^+g(t)=\limsup_{h\downarrow0}\frac{g(t+h)-g(t)}h,\qquad
+ \{D^+g=-\infty\}\subset\bigcup_{j,n}E_{j,n},\\
+ E_{j,n}=\{t: |g(t)|\le n,\ g(t+h)-g(t)\le-h\ (0<h<1/j)\},\\
+ E=I\cap E_{j,n},\ |I|<1/j,\qquad
+ G(t)=\sup\big(\{-n\}\cup g(E\cap[t,\infty))\big),\\
+ G\ \text{nonincreasing},\quad G|_E=g|_E,\quad
+ t\in E\cap E^{(1)},\ G'(t)\in\R\\
+ \Longrightarrow\ \exists\,t_i\in E,\ t_i\downarrow t:
+ \quad\frac{g(t_i)-g(t)}{t_i-t}\longrightarrow G'(t)
+ \quad\Longrightarrow\quad D^+g(t)>-\infty .
+\end{gather*}
+\[ |E\setminus(E^{(1)}\cap\{G'\in\R\})|=0
+ \quad\Longrightarrow\quad |\{D^+g=-\infty\}|^*=0 . \]
+$g$ right continuous; $E_{j,n}$ Borel by rational increments; localize inside the domain.
+\rowhead{Proof order}{Arrows point from inputs to conclusions}
+\[
+\begin{gathered}
+ 2.1\to2.2\to2.3,\qquad 3.1,3.2,3.3,3.4,2.1,2.3,5.1\to3.5,\\
+ 4.1,4.2,4.3,3.5\to4.4,\qquad
+ 2.3,3.2\text{--}3.5,4.1,4.3,4.4,5.1,6.1,6.2\to6.3,\\
+ 3.1,3.5,4.1,4.3,6.3,7.1\to1.1 .
+\end{gathered}
+\]
+
+\newpart{2.2--2.3 \quad Descent sets}
+\rowhead{2.2}{Anisotropic boxes}
+\[
+ \delta_r b=(r^{k_i}b_i)_{i=1}^d,\quad k_i>1,\quad
+ U=a+(-e,e)^d,\quad V(z+\delta_r b)\le V(z)-cr\quad(b\in U,\ 0<r<r_0).
+\]
+$\boxd_{k,l}(V,z)$ denotes existence of such $U,c,r_0$ in the indicated
+coordinate plane with weights $(k,l)$.
+\begin{align*}
+ E&=\{z:\ \forall\, b\in U,\ 0<r<r_0,\ V(z+\delta_r b)\le V(z)-cr\},\\
+ z\in E^{(1)},\ B_r(z)&=z+\delta_r(-1,1)^d,\quad \kappa=\textstyle\sum_i k_i,\\
+ |B_{(C+\epsilon)r}(z)\setminus E|&=o(r^\kappa)
+     < |B_{\epsilon r}(w)|=2^d\epsilon^\kappa r^\kappa
+                \quad(w\in B_{Cr}(z)).
+\end{align*}
+Here density is for the balls of $\max_i |z_i-w_i|^{1/k_i}$; these balls are doubling.
+\begin{align*}
+ &1/\min_i k_i<\alpha<1,\quad r_j=2^{-\alpha j},\\
+ &N_j(t)=\#\{(2l+1)2^{-j}\in(0,t]\},\qquad
+ D_i(t)=\sum_{j\ge1} a_i N_j(t)r_j^{k_i}\quad (0<t<1),\\
+ &\sum_{j\ge1}2^{j-1}r_j^{k_i}<\infty,\quad
+ J=\min\{j:N_j(t+h)>N_j(t)\},\quad h\le 2^{1-J},\\
+ &|\mathrm{tail}_i|\le
+  3|a_i|r_J^{k_i}\sum_{m>L}2^{-m(\alpha k_i-1)}< e r_J^{k_i}/4 .
+\end{align*}
+Retain levels $J,\ldots,J+L$ with scales $s_\ell$ and put $s_N=r_J$ last.
+\begin{align*}
+ &p_0=z,\quad p_N=z+D(t+h)-D(t),\quad p_0,\ldots,p_{N-1}\in E,\\
+ &p_\ell=z+\sum_{j\le\ell}\delta_{s_j}a+\eta_\ell,\qquad
+ |\eta_{\ell,i}|<(\epsilon r_J)^{k_i}\ (\ell<N),\quad \eta_N=\mathrm{tail},\\
+ &2(\epsilon r_J)^{k_i}<\tfrac14 e(2^{-\alpha L}r_J)^{k_i}
+ \ \Longrightarrow\ p_\ell-p_{\ell-1}\in\delta_{s_\ell}U,\\
+ &V(p_N)-V(p_0)\le-c\sum_{\ell=1}^N s_\ell\le-c r_J,\qquad
+ r_J/h\ge 2^{(1-\alpha)J-1}\to\infty .
+\end{align*}
+\[
+ z_0+D(t)\in E^{(1)}\ \Longrightarrow\
+ D^+\big[V(z_0+D(\cdot))\big](t)=-\infty .
+\]
+\[
+ 0\overset{2.1}{=}\int_{\R^d}\int_0^1 {\bf1}_{E^{(1)}}(z_0+D(t))\,dt\,dz_0
+  =\int_0^1 |E^{(1)}-D(t)|\,dt=|E| .
+\]
+\rowhead{2.3}{Countable tests, all witnesses}
+\[
+  N_x=\bigcup_{\substack{\chi,e,f,k,l\ \text{from prescribed countable lists}\\
+                          U,c,r_0\ \text{rational data}}}
+         \chi^{-1}(E_{\chi,e,f,k,l,U,c,r_0}),\qquad
+ |E_{\chi,\ldots}|=\int_{\R^3}|(E_{\chi,\ldots})_w|\,dw=0 .
+\]
+Each base set is localized to a chart box and tested with its continuous
+extension. An arbitrary admissible rectangle contains a rational subrectangle.
+
+\newpart{3.1--3.5 \quad Endpoint, length and kernel}
+\rowhead{3.1}{Product $L^2$ coordinates; fixed initial state}
+\begin{align*}
+ u_{[a,a+d]}(s)&=d\,u(a+ds),&
+ \|u_{[a,a+d]}\|_2^2&=d\int_a^{a+d}|u(t)|^2dt,\\
+ \dot q&=\sum_i u_iX_i(q),&
+ J(u)&=\sum_{\mathrm{pieces}}\int |u|=L(\gamma),\\
+ \dot\eta&=B(t)\eta+\sum_i h_i X_i(q),&
+ B(t)&=\sum_i u_i DX_i(q),\quad\eta(0)=0 .
+\end{align*}
+\[ A=DG(u),\qquad Ah=\eta(T)=\int_0^T U(T,s)\sum_i h_i(s)X_i(q(s))\,ds .\]
+$U$ includes all node transitions. Orthonormal frames recover the unique input.
+\rowhead{3.2}{Affine fiber and uniform gain}
+\[
+ W=\im A,\quad K=\ker A,\qquad
+ \suppc(u):\Longleftrightarrow\exists p\ \forall v:\ J(v)\ge J(u)+pA(v-u).
+\]
+\begin{align*}
+ u\in\arg\min_{u+K}J
+ &\Longleftrightarrow
+    \operatorname{epi}^{>}(J)\cap((u+K)\times\{J(u)\})=\varnothing
+ \ \overset{\rm separation}{\Longleftrightarrow}\ \suppc(u),\\
+ \neg\suppc(u)&\Longrightarrow \exists O\subset K\text{ open, nonempty},\
+  \exists c>0:\ J(u+h)\le J(u)-2c\quad(h\in O),\\
+ S(0)=u,\ DS(0)=\iota_K &\Longrightarrow
+ J(S(th))\le J(u)-2ct+\operatorname{Lip}(J)o(t)\le J(u)-ct .
+\end{align*}
+The last estimate is uniform on a smaller bounded $O$.
+\rowhead{3.3}{Eliminate the regular coordinates}
+\begin{align*}
+ T_yM&=W\oplus C,\quad A|_L:L\simeq W,\quad
+ \Pi_W(G(u+k+\ell(k))-y)=0,\quad D\ell(0)=0,\\
+ S(k)&=u+k+\ell(k),\quad
+ \pi D^2(G\circ S)(0)[h,b]=\pi D^2G(u)[h,b],\quad h,b\in K,\\
+ Q(h)&=\tfrac12\pi D^2G(u)[h,h],\qquad DQ(h)b=\pi D^2G(u)[h,b],\\
+ B&=D\phi(y),\quad D(\phi\circ G)=BA,\quad
+ D^2\phi(y)[Ah,Ab]=0,\quad (pB^{-1})BA=pA .
+\end{align*}
+\rowhead{3.4}{Taylor division + parameter inverse}
+\[
+ \frac{F_i(tz)}{t^{k_i}}
+ =\int_0^1\frac{(1-s)^{k_i-1}}{(k_i-1)!}D^{k_i}F_i(stz)[z^{k_i}]\,ds
+ \xrightarrow[t\to0]{}P_i(z).
+\]
+\[
+ DP(h)L\in GL_d\ \Longrightarrow\
+ \forall O'\ni h\ \exists B\ni P(h),t_0>0\ \forall\,a\in B,\ 0<t<t_0\
+ \exists h'\in O':\quad F_i(th')=t^{k_i}a_i .
+\]
+Here $D^jF_i(0)=0$ for $j<k_i$; apply the inverse theorem to
+$(t,z)\mapsto(t,(t^{-k_i}F_i(t(h+Lz)))_i)$ at $(0,0)$.
+\rowhead{3.5}{Exclusion at ranks four and three; $\neg\suppc(u)$}
+\begin{align*}
+ r=4:\quad f(t)=\sigma s^2,\ |f(t)|\le Ct^2
+ &\Longrightarrow V(y+\sigma s^2e)-V(y)\le-cs/\sqrt C
+ \ \overset{2.1}{\Longrightarrow}\ y\in N_{x,4},\\
+ r=3:\quad \exists h:\ \pi D^2G(u)[h,K]=T_yM/W
+ &\Longrightarrow \boxd_{2,2}(V,y)
+ \ \overset{2.3}{\Longrightarrow}\ y\in N_{\rm polar}.
+\end{align*}
+First line: continuity and $f(T)\ne0$ supply all $0<s<\sqrt{|f(T)|}$.
+Second: the polar minor is a nonzero quadratic, hence nonzero somewhere in $O$.
+
+\newpart{4.1--4.4 \quad Brackets and the Hessian}
+\rowhead{4.1}{Growth at a density point}
+\begin{align*}
+ E_{j,s}&=\{y:\dim D_j(y)=\dim D_{j+1}(y)=s<5\},\\
+ b|_{E_{j,s}}=0,\ b\in C^\infty
+ &\ \Longrightarrow\ \partial^\alpha b(y)=0
+ \quad(\forall\alpha,\ \text{a.e. }y\in E_{j,s}),\\
+ [X_i,B_a]\in D_j\pmod{\text{flat at }y}
+ &\Longrightarrow X_I(y)\in D_j(y)\quad(\forall I)
+ \ \Longrightarrow\ T_yM\subset D_j(y),\\
+ |E_{j,s}|=0\quad&\Longrightarrow\quad
+ \begin{cases}
+ m=2:\ \dim D_2=3,\ \dim D_3\ge4,\ D_4=T_yM,\\
+ m=3:\ \dim D_2\ge4,\ D_3=T_yM .
+ \end{cases}
+\end{align*}
+$B_a$ is a local independent $s$-word list; $b$ is a transverse coefficient.
+\rowhead{4.2}{Finite rank + causality}
+\[
+ \cH_a=\{h:h|_{(0,a)}=0\},\quad R_a=T\cH_a\subset\cH_a,\quad
+ b>a\Rightarrow R_b\subset R_a,\quad \dim R_a\le\rk T<\infty .
+\]
+\[
+ \tau\in\arg\min_{a\in\mathbb Q\cap(0,1)}\dim R_a
+ \ \Longrightarrow\ R_\tau\subset\bigcap_{\tau<b<1,\ b\in\mathbb Q}\cH_b=\{0\}.
+\]
+\[
+ \tau<I<J<1:\quad\langle{\bf1}_J,T{\bf1}_I\rangle
+  =\int_{J\times I} K(t,s)\,dt\,ds=0
+  \ \Longrightarrow\ K(t,s)=0\quad(\tau<s<t<1)
+\]
+by continuity on the open triangle.
+\rowhead{4.3}{Terminal layers; $m=2$ and nonconstant path for $D_2,D_3$}
+\begin{align*}
+ pW=0&\Rightarrow p_tX_i(\gamma_t)=0,\quad \Delta_y\subset W,\\
+ Y_i(t)=\Phi_t^*X_i,\ B(t)=\Phi_t^*[X_1,X_2],\quad
+ (Y_1',Y_2')&=(-u_2B,u_1B),\\
+ u_i\,p_0 B=0\ {\rm a.e.}&\ \Longrightarrow\ p[X_1,X_2](y)=0 .
+\end{align*}
+Shorten the maximal idle tail. For a nonconstant loop, first fix the prefix at
+$s$ with $\gamma(s)\ne y$:
+\[
+ K_s=\ker DG_s,\quad DG_s=DG\,I_s,\quad I_s K_s\subset K,\quad
+ (pD^2G_s)|_{K_s\times K_s}=(I_s)^*((pD^2G)|_{K\times K}).
+\]
+In the moving equation the Hessian minus its separable part is
+\[
+ {\bf1}_{s<t}\,p_0[Y_j(s),Y_i(t)] .
+\]
+\[
+ \rk(pD^2G|_{K\times K})<\infty\overset{4.2}{\Longrightarrow}
+ p_0[Y_i(1),Y_j(t)]=0
+ \Longrightarrow u_j(t)p_0[Y_i(1),B(t)]=0\quad\text{a.e. on a tail}.
+\]
+Continuity and activity on every terminal subinterval give $pD_3(y)=0$.
+\rowhead{4.4}{The entire quadratic image}
+\[
+ H=\pi D^2G(u)|_{K\times K}=(H_1,H_2),\quad
+ \forall h,\ H_1h\wedge H_2h=0
+ \ \Longrightarrow\ \dim L\le1,\qquad L=\operatorname{span} H(K,K).
+\]
+For $\rk H_1\ge2$, test $h_1,h_2,h_1+h_2$; for two rank-one rows use
+$H_i=c_i\ell_i\otimes\ell_i$. Two finite-rank rows would give
+$D_3(y)\subset W$ by 4.3, contrary to $\dim D_3(y)\ge4>3$. Thus
+\[
+ \dim L=1,\qquad \pi^{-1}L=D_3(y),\qquad \rk H_{\rm nonzero}=\infty .
+\]
+
+\newpart{5.1--6.2 \quad Corrections, coordinates, polynomials}
+\rowhead{5.1}{Uniformity in \emph{both} endpoints}
+\begin{align*}
+ F_s(z)&=z+s^kX_s(z),& G_t(z)&=z+t^lY_t(z),\\
+ G_tF_s-F_sG_t&=s^kt^l R_{s,t},& R_{0,0}&=DY_0X_0-DX_0Y_0,\\
+ (F_tG_t)^{-1}(G_tF_t)(z)&=z+t^{k+l}Z_t(z),&
+ Z_0&=[X_0,Y_0] .
+\end{align*}
+\begin{align*}
+ W_t(z)&=z+t^kZ_t(z),\quad t=|s|^{1/k},&
+ \Psi_s(z)&=\begin{cases}W_t(z),&s\ge0,\\W_t^{-1}(z),&s<0,\end{cases}\\
+ D_s\Psi_0(z)&=Z_0(z),\quad D_z\Psi_0=I,&
+ D_s(\Psi^{5}_{s_5}\circ\cdots\circ\Psi^{1}_{s_1})(y,0)&=[X_{I_1},\ldots,X_{I_5}](y)\in GL_5.
+\end{align*}
+\[
+ |s|\le C_1|z'-z|,\quad \ell_{\rm conn}\le C_2\sum_j |s_j|^{1/|I_j|}
+ \le C_3|z'-z|^{1/r},\qquad |I_j|\le r,\quad |s|\le1 .
+\]
+\[
+ \text{accessibility classes open},\quad M\text{ connected}
+ \ \Longrightarrow\ V<\infty,\qquad |V(z')-V(z)|\le d(z,z') .
+\]
+\rowhead{6.1}{Charts before controls}
+\begin{align*}
+ &\{\text{frames }X^\nu\}_{\nu\in\N},\quad
+  \big\{\chi_{\nu,I,j}: |I|\le3,\ j\in\N,\ 
+              (\chi_{\nu,I,j})_*X_I^\nu=e_1\big\},\\
+ &m=2:\quad W=D_2(y),\quad D_3(y)=W\oplus\R e,\quad
+                f\notin D_3(y),\\
+ &m=3:\quad \dim W=3<\dim D_2(y),\quad
+                e=X_I^\nu(y)\notin W,\ |I|\le2,\quad f\notin W+\R e,\\
+ &\forall W\ \exists(\chi,e,f)\ \text{in the prescribed list}:
+                 \quad T_yM=W\oplus\R e\oplus\R f .
+\end{align*}
+Second countability selects a subcover of each word's nonvanishing locus.
+\rowhead{6.2}{The quadratic--cubic alternative}
+\[
+ Q(\lambda h)=\lambda^2Q(h),\quad P(\lambda h)=\lambda^3P(h),\quad
+ \rk Q\ge3,\qquad dQ\wedge dP\equiv0 .
+\]
+\begin{align*}
+ (dQ\wedge dP)_h(h,k)=0
+ &\Longrightarrow 2Q(h)dP_h(k)=3P(h)dQ_h(k),\\
+ Q\ne0&\Longrightarrow d(P^2/Q^3)=0
+ \Longrightarrow P^2=bQ^3\quad\text{on each chosen finite slice},\\
+ Q=L_1L_2&\Longrightarrow\rk Q\le2,\qquad
+ b\ne0\Longrightarrow 2\operatorname{ord}_{Q}P=3 .
+\end{align*}
+Choose the slice to contain the test vector and a rank-three minor.
+Irreducibility and parity give $b=0$, hence $P=0$.
+
+\newpart{6.3 \quad One null set for all rank-three witnesses}
+\[
+ N_{x,3}\supset N_{\rm growth}\cup N_{\rm polar}\cup
+ \bigcup_{\chi,e,f}\ \bigcup_{(k,l)\in\{(2,2),(2,3),(2,4)\}}
+     N_{\chi,e,f,k,l}(V),\qquad \mu^*(N_{x,3})=0 .
+\]
+Fix $y\notin N_{x,3}$, $y\ne x$, $\rk A=3$, and suppose $\neg\suppc(u)$.
+\rowhead{$m=2$}{Quadratic image of dimension one}
+\begin{align*}
+ F_1(th)&=t^2Q(h)+O(t^3),&
+ F_2(th)&=t^3P(h)+O(t^4),& \rk Q&=\infty .
+\end{align*}
+\[
+ \exists h:\rk D(Q,P)(h)=2
+ \ \Longrightarrow\ \exists h'\in O:\rk D(Q,P)(h')=2
+ \ \overset{3.4}{\Longrightarrow}\ \boxd_{2,3}(V,y).
+\]
+The minor on a line $h_0+sh$ has nonzero cubic leading coefficient.
+In the complementary case, $P=0$ by 6.2. Choose $h\in O$ and $b_1$ with
+$dQ_h(b_1)\ne0$. Then
+\begin{align*}
+ F_1(t(h+\lambda(t,a)b_1))&=t^2a,\qquad
+ F_2(t(h+\lambda(t,a)b_1))=t^4(C(a)+r_t(a)),\\
+ &\sup_I|r_t|\to0,\quad V(z_t)\le V(y)-ct,\\
+ K(3\rho)^{1/4}\le c/2,\quad
+ |b-C(a)-r_t(a)|&<3\rho\\
+ &\Longrightarrow V(y+t^2ae+t^4bf)
+ \le V(z_t)+Kt(3\rho)^{1/4}\le V(y)-ct/2 .
+\end{align*}
+Thus $\boxd_{2,4}(V,y)$ on $\operatorname{int}I$ and a fixed open $b$ interval,
+including when $C$ vanishes.
+\rowhead{$m=3$}{One cheap axis, one cubic-root correction}
+\[
+ W_t(z)=z+t^2e+O(t^3),\qquad
+ d(z,z+se)\le C_2|s|^{1/2},\quad d(z,z')\le C_3|z-z'|^{1/3}.
+\]
+At order one, translation along $e$ costs $|s|$; at order two the cubic
+error costs $O(t)$ for $|s|=t^2$. For the shorter ray write
+\[
+ z_t=y+F(t)e+H(t)f,\quad F(0)=F'(0)=H(0)=H'(0)=0,\quad
+ V(z_t)\le V(y)-ct .
+\]
+\begin{align*}
+ H''(0)=0:\quad
+ &C_2|a-F(t)/t^2|^{1/2}+C_3|b-H(t)/t^3|^{1/3}<c/2
+   \ \Longrightarrow\ \boxd_{2,3},\\
+ H''(0)\ne0:\quad
+ &H(t\theta)/t^2\longrightarrow H''(0)\theta^2/2,\ \
+   \theta\in[1-\epsilon,1+\epsilon],\\
+ &|a-F(t\theta)/t^2|^{1/2}C_2<c(1-\epsilon)/2
+ \ \overset{\rm IVT}{\Longrightarrow}\ \boxd_{2,2}.
+\end{align*}
+\[
+ \boxd_{k,l}(V,y)\Longrightarrow y\in N_{x,3},\qquad
+ \boxed{\ y\notin N_{x,3},\ \rk A=3,\ L(u)=V(y)\ \Longrightarrow\ \suppc(u)\ } \quad(y\ne x).
+\]
+
+\newpart{7.1 and 1.1 \quad Critical parameters and outer measure}
+\rowhead{7.1}{Normal lift, including zero-speed intervals}
+\begin{align*}
+ \suppc(u)&\Longrightarrow
+ \exists\eta\quad J(u)+\eta A(v-u)\le J(v)\quad(\forall v),\\
+ v=0,\ 2u&\Longrightarrow \eta Au=J(u),\qquad
+ a_i(t)=p(t)X_i(q(t)),\qquad \eta Av=\int_0^T a\cdot v,\\
+ \int a\cdot v\le\int |v|\quad(\forall v)
+ &\Longrightarrow |a|\le1\ \text{a.e.},\qquad
+ \int_0^T(|u|-a\cdot u)=0\Longrightarrow u=|u|a\ \text{a.e.}
+\end{align*}
+\begin{align*}
+ H(q,p)&=\tfrac12\textstyle\sum_i(pX_i(q))^2,\quad
+ (\dot q,\dot p)=|u|\vec H(q,p),\\
+ L&=\int_0^T |u|,\quad L=0\Longrightarrow y=x,\\
+ L>0:\quad \sigma(t)&=L^{-1}\int_0^t|u|,\quad
+ \xi_0=Lp(0),\quad
+ (q(t),Lp(t))=\Phi_H^{\sigma(t)}(x,\xi_0),\\
+ v_i(\xi,t)&=\sigma'(t)p^\xi(\sigma(t))X_i(q^\xi(\sigma(t))),\qquad
+ v(\xi_0)=u,\\
+ P_x(\xi)&=\pi_M\Phi_H^1(x,\xi)=G(v(\xi))\quad\text{locally in terminal coordinates},\\
+ \rk DP_x(\xi_0)&\le \rk DG(u)<5,\quad
+ \dim T_x^*M=\dim M=5
+ \ \overset{\rm Sard}{\Longrightarrow}\
+       \mu^*(P_x(\Crit P_x))=0 .
+\end{align*}
+$\operatorname{dom}P_x=\{\xi:\Phi_H^s(x,\xi)\ \text{exists for }0\le s\le1\}$
+is open; $\sigma'=0$ is allowed.
+\rowhead{1.1}{Exhaustion of cases}
+\[
+ [aX,bX]=(aXb-bXa)X,\qquad m=1\Longrightarrow D_\infty(y)=\Delta_y\ne T_yM .
+\]
+\[
+\begin{array}{ccl}
+\toprule
+m & r=\rk DE_x<5\quad(y\ne x,\ y\notin N_{\rm gr}) & \text{input}\\
+\midrule
+2 & 3,\ 4 & D_2(y)\subset W,\ \dim D_2(y)=3\\
+3 & 3,\ 4 & \Delta_y\subset W\\
+4 & 4 & \Delta_y\subset W\\
+\bottomrule
+\end{array}
+\]
+\begin{gather*}
+ r=4,\ y\notin N_{x,4}\ \overset{3.5}{\Longrightarrow}\ \suppc(u),\qquad
+ r=3,\ y\notin N_{x,3}\ \overset{6.3}{\Longrightarrow}\ \suppc(u),\\
+ \Sigma_x\subset \{x\}\cup N_{\rm gr}\cup N_{x,4}\cup N_{x,3}
+                         \cup P_x(\Crit P_x),\\
+ \boxed{\ \mu^*(\Sigma_x)\le 0+0+0+0+0=0.\ }
+\end{gather*}
+\[
+ \forall x,\mu\ \exists N_{x,\mu}\ \forall y\notin N_{x,\mu}\ 
+  \forall\gamma\in\Omega_x:\quad E_x\gamma=y,\ L(\gamma)=V(y)
+          \ \Longrightarrow\ \rk D_\gamma E_x=5 .
+\]
+
+\newpart{Formal scope \quad 26 November 2026}
+Numbers are the manuscript's statement numbers. Each entry identifies a
+checked declaration used for the indicated conclusion or application.
+General paper lemmas may have narrower machine-checked instances.
+
+\smallskip\begingroup\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lp{.74\linewidth}@{}}
+\toprule
+1.1 & \decl{five_dimensional_metric_minimizing_sard}\\
+2.1 & \decl{right_slope_bot_null}\\
+2.2 & \decl{planar_descent_null}\\
+2.3 & \decl{parallel_planes_null}; \decl{ae_chart_overlap}\\
+3.1 & \decl{ControlChart.transition}; \decl{native_endpoint_derivative}\\
+3.2 & \decl{costMultiplier_iff_linear_fiber_min}; \decl{length_cone_on_level_chart}\\
+3.3 & \decl{level_chart}; \decl{restricted_hessian}; \decl{intrinsic_second_variation}\\
+3.4 & \decl{mixed_box}; \decl{plane_level_family} (application)\\
+3.5 & \decl{all_rank_corank_one_multiplier}; \decl{ae_corank_two_length_flag} ($m=2$ polar)\\
+4.1 & \decl{equal_rank_set_null}; \decl{ae_frame_flag}\\
+4.2 & \decl{terminal_annihilation}; \decl{terminal_kernel_zero}\\
+4.3 & \decl{all_rank_endpoint_floor}; \decl{second_layer_in_endpoint_range};
+      \decl{whole_third_flag_at_distinct_endpoint}\\
+4.4 & \decl{whole_hessian_flag}\\
+5.1 & \decl{frame_root_connectors}\\
+6.1 & \decl{frame_word_straightening}; \decl{ae_rank_three_axes}\\
+6.2 & \decl{third_jet_zero_of_dependent_rows} (jet application)\\
+6.3 & \decl{common_null_set_manifold} (supplementary audit module)\\
+7.1 & \decl{ae_no_supported_singular}; \decl{critical_values_null}\\
+\bottomrule
+\end{tabular}\endgroup
+
+\rowhead{Scope checks}{Paper $\supseteq$ formal application}
+\[
+\begin{array}{lll}
+\toprule
+ & \text{paper} & \text{checked application}\\
+\midrule
+2.2 &d<\infty,\ k_i\in\R,\ k_i>1 & d=2,\ k_i\in\N,\ k_i\ge2\\
+2.3 & (k,l)\in(1,\infty)^2 & (k,l)\in\N^2,\ k,l\ge2;\ \R^3\times\R^2\\
+3.4 &d<\infty,\ k_i\in\N,\ k_i\ge2
+       & (2,2),(2,3);\ \text{scalar inversion}\\
+4.3 &\gamma\ \text{nonconstant} &x\ne y;\ x=y:\ \text{suffix identity in 4.3}\\
+5.1 &r\in\N,\ 1\le r<\infty &D_r(y)=T_yM,\ r\le4\\
+\bottomrule
+\end{array}
+\]
+\rowhead{Kernel replay}{Frozen project, Lean 4.24.0}
+\[
+ \#\text{modules}=150,\qquad
+ \#\text{safe declarations checked}=2602,\qquad
+ \#\text{unsafe/partial skipped}=5 .
+\]
+\[
+ \operatorname{Axioms}(1.1)=\operatorname{Axioms}(6.3_{\rm audit})
+ =\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}\}.
+\]
+The paper-to-definition correspondence and the wider paper statements
+above are mathematical readings of the sources. Kernel replay checks the
+formal declarations.
+\end{document}

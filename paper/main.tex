@@ -1,0 +1,1024 @@
+% Layout follows Revista de la Union Matematica Argentina, Information for Authors.
+% https://revistas.uns.edu.ar/revuma/information/authors
+\documentclass[10pt,reqno]{amsart}
+\usepackage{amssymb,geometry}
+\geometry{paperwidth=176mm,paperheight=250mm,textheight=189mm,tmargin=35mm,
+  lmargin=30mm,rmargin=20mm,headsep=8mm,headheight=11pt,footskip=30pt,twoside=true}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\R}{\mathbb R}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rank}{\operatorname{rank}}
+\begin{document}
+\title[Minimizing Sard in dimension five]{The fixed-source minimizing Sard property\\ in dimension five}
+% Author, affiliation, and contact address to be supplied by the authors.
+\date{November 26, 2026}
+\subjclass[2020]{Primary 53C17; Secondary 49K15, 93B05}
+\keywords{Sub-Riemannian distance, singular minimizing curves, endpoint map, second variation}
+\begin{abstract}
+For a smooth bracket-generating distribution of constant rank on a five-dimensional
+manifold with a smooth horizontal metric, we prove that the set of endpoints of
+singular length minimizers from each fixed point has zero smooth outer volume.
+In the rank-two case the difficult endpoint differential has a two-dimensional
+cokernel. A finite-rank argument for its second variation identifies a bracket
+direction that can be straightened independently of the minimizing control.
+Taylor expansion and a local horizontal correction then produce two-dimensional
+regions of strict descent for the distance. An anisotropic differentiation
+argument excludes these regions at almost every endpoint. The result concerns
+attained minima and requires no completeness assumption.
+\end{abstract}
+\maketitle
+\section{Statement and outline}
+Let $M$ be connected, Hausdorff, second countable and without boundary.
+In a smooth local frame $(X_i)_{i=1}^m$ of the smooth subbundle $\Delta$, write
+\[
+ \begin{gathered}
+ \dim M=5,\quad 0<m=\rank\Delta<5,\quad g\in C^\infty(\mathrm{Sym}^2\Delta^*),\quad g>0,\\
+ D_j(y)=\mathrm{span}\{X_I(y):1\le |I|\le j\},\qquad
+ \bigcup_{j\ge1}D_j(y)=T_yM\quad(y\in M).
+ \end{gathered}
+\]
+For a fixed source $x$, use the unrestricted endpoint map on horizontal paths:
+\[
+ \begin{aligned}
+ \Omega_x&=\{\gamma\in W^{1,2}([0,1],M):\gamma(0)=x,\
+           \dot\gamma(t)\in\Delta_{\gamma(t)}\ \text{a.e.}\},\\
+ E_x(\gamma)&=\gamma(1),\qquad L(\gamma)=\int_0^1|\dot\gamma(t)|_g\,dt,\\
+ V(y)&=d(x,y)=\inf_{\beta\in E_x^{-1}(y)} L(\beta),\\
+ \gamma\text{ singular}&\iff \rank D_\gamma E_x<5 .
+ \end{aligned}
+\]
+Only the initial point is fixed when differentiating $E_x$.
+\begin{theorem}\label{main}
+For each $x\in M$ and each smooth positive density $\mu$ on $M$,
+\[
+ \mu^*\{y:\exists\gamma\in\Omega_x,\ E_x(\gamma)=y,\ 
+ L(\gamma)=d(x,y),\ \rank D_\gamma E_x<5\}=0 .
+\]
+\end{theorem}
+The quantifier over minimizing curves includes endpoints shared by regular and
+singular minimizers. The exceptional set may depend on the source. Rifford
+\cite{rifford} obtains the minimizing Sard property under an almost-everywhere
+Goh-rank condition and, in particular, for distributions of corank at most
+two in the complete setting of that paper. A rank-two distribution in dimension
+five has corank three. In dimension three the strong Sard theorem of
+Belotto da Silva, Figalli, Parusi\'nski and Rifford \cite{strong} covers even
+nonminimizing singular curves for analytic structures.
+
+For a minimizing control $u$ write $A=DG(u)$ and let $\mathcal S(u)$ denote
+the support condition of Lemma~\ref{support}. The proof splits as follows
+outside the growth exception and the source:
+\[
+\begin{array}{c|l}
+ \text{condition on }u & \text{consequence for }y=G(u)\\ \hline
+ \mathcal S(u),\ \rank A<5 & y\in P_x(\operatorname{Crit}P_x)
+                                  \quad(\text{Lemma~\ref{normal}})\\
+ \neg\mathcal S(u),\ \rank A=4 & y\in N_{x,4}\quad(\text{Lemma~\ref{scalar}})\\
+ \neg\mathcal S(u),\ \rank A=3 & y\in N_{x,3}\quad(\text{Proposition~\ref{two-missing}})
+\end{array}
+\]
+The null sets are chosen before $u$. Lemma~\ref{two-point} supplies
+$V<\infty$ and $V\in C^0(M)$ wherever the measure lemmas below are applied.
+\section{A measure lemma for strict descent}\label{measure}
+\input{density}
+\section{The endpoint in control coordinates}\label{controls}
+Fix a finite subdivision and an orthonormal frame $X_i^j$ on each buffered
+piece. Rescale each piece to $[0,1]$. In terminal coordinates,
+\[
+ \begin{aligned}
+ \mathcal U&=\prod_{j=1}^N L^2([0,1],\R^m),&
+ \dot q_j&=\sum_i u_{j,i}X_i^j(q_j),\\
+ q_1(0)&=x,\quad q_{j+1}(0)=q_j(1),&
+ G(u)&=q_N(1),\\
+ J(u)&=\sum_j\int_0^1|u_j|,&
+ |J(u)-J(v)|&\le\sqrt N\,\|u-v\|_{\mathcal U}.
+ \end{aligned}
+\]
+At a minimizer $V(G(u))=J(u)$, while $V(G(v))\le J(v)$ throughout the chart.
+\begin{lemma}[Control charts and the endpoint derivative]\label{control-coordinates}
+At every $\gamma\in\Omega_x$, the split controls of a fixed buffered
+frame subdivision give smooth local coordinates. In these coordinates
+$E_x$ is represented by $G$, its derivative has the rank of $DG(u)$,
+and its length is $J(u)$.
+\end{lemma}
+\begin{proof}
+On $[a,a+d]$ the rescaling and its inverse are
+\[
+ u^\sharp(s)=d\,u(a+ds),\qquad u(t)=d^{-1}u^\sharp((t-a)/d),
+ \qquad \|u^\sharp\|_2^2=d\int_a^{a+d}|u(t)|^2\,dt .
+\]
+On a smaller chart tube apply a smooth cutoff to the fields and set
+\[
+ \mathcal T(q,z,u)(t)=z+\sum_i\int_0^t u_i(s)X_i(q(s))\,ds .
+\]
+Subdivide until $\kappa:=\sum_i\|DX_i\|_\infty\|u_i\|_1<1$, also for
+controls near the reference control. Then
+\[
+ \begin{aligned}
+ \|\mathcal T(q,z,u)-\mathcal T(\tilde q,z,u)\|_\infty
+       &\le\kappa\|q-\tilde q\|_\infty,\\
+ D_q^j\mathcal T[h_1,\ldots,h_j](t)
+       &=\sum_i\int_0^t u_i D^jX_i(q)[h_1,\ldots,h_j]\,ds
+                  \quad(j\ge1),\\
+ (I-D_q\mathcal T)^{-1}&=\sum_{n\ge0}(D_q\mathcal T)^n .
+ \end{aligned}
+\]
+The mixed derivatives with one control variation replace $u_i$ by that
+variation; higher control derivatives vanish. The implicit function theorem
+at $q=\mathcal T(q,z,u)$ gives smooth $(z,u)\mapsto q$ in $C^0$.
+Writing $X(q)$ for the matrix of frame columns in a chart gives
+\[
+ \dot q=X(q)u\in L^2,\quad
+ X^\dagger=(X^\top X)^{-1}X^\top,\quad u=X^\dagger(q)\dot q .
+\]
+On common subdivisions a change of coordinates $\phi$ and frame $\widetilde X$
+therefore acts by
+\[
+ \widetilde u=\widetilde X^\dagger(\phi(q))D\phi(q)X(q)u .
+\]
+Composition on buffered tubes is smooth in $C^0$ and multiplication
+$C^0\times L^2\to L^2$ is continuous bilinear. The reverse formula and
+uniqueness of the ODE give mutually inverse smooth transitions.
+
+For later use, let $\eta_h$ be the state variation induced by $u+\epsilon h$
+and set $B(t)=\sum_i u_i(t)DX_i(q(t))$ in each chart. Differentiating the
+integral equation gives
+\begin{equation}\label{linearstate}
+ \dot\eta_h(t)=B(t)\eta_h(t)+\sum_i h_i(t)X_i(q(t)),\qquad \eta_h(0)=0 .
+\end{equation}
+Let $U(t,s)$ be the evolution operator of $\dot\eta=B\eta$, including the
+derivatives of the chart transitions at intermediate nodes. Taking the
+terminal coordinate derivative as part of $U(T,s)$ gives, on the concatenated
+time interval $[0,T]$,
+\begin{equation}\label{firstvariation}
+ DG(u)h=\int_0^T U(T,s)\sum_i h_i(s)X_i(q(s))\,ds .
+\end{equation}
+Finally, orthonormality gives $|\dot q(t)|_g=|u(t)|$ almost everywhere on
+each piece. Integrating and summing identifies the costs.
+\end{proof}
+
+\begin{lemma}[Separation and a uniform length decrease]\label{support}
+Put $A=DG(u)$, $W=\im A$, and $K=\ker A$. There exists a terminal covector
+$p$ satisfying $J(v)\ge J(u)+pA(v-u)$ for every $v$ if and only if $u$
+minimizes $J$ on $u+K$. In its absence there is a relatively open nonempty
+set of $h\in K$ with $J(u+h)<J(u)$. Near each such $h$, any smooth
+kernel slice $S$ with $S(0)=u$ and $DS(0)$ the inclusion satisfies
+$J(S(th'))\le J(u)-ct$ for all $h'$ near $h$ and all small $t>0$,
+for some $c>0$.
+\end{lemma}
+\begin{proof}
+If $J(u)=\inf_{u+K}J$, separate $\{(v,s):s>J(v)\}$ from
+$(u+K)\times\{J(u)\}$. For some $(\ell,\lambda)\ne(0,0)$,
+\[
+ \ell(v)+\lambda s\ge\ell(u+k)+\lambda J(u)
+ \quad(s>J(v),\ k\in K).
+\]
+Let $s\to+\infty$ and vary $k$ along lines: $\lambda\ge0$, $\ell|_K=0$.
+If $\lambda=0$, varying $v$ forces $\ell=0$. Thus $\lambda>0$, and
+\[
+ p(Av)=-\ell(v)/\lambda,\qquad
+ s\downarrow J(v)\ \Longrightarrow\ J(v)-J(u)\ge pA(v-u).
+\]
+Extend $p$ from $W$ to the target. Conversely $v\in u+K$ gives $pA(v-u)=0$.
+Strict inequality persists
+in a neighborhood by continuity. Choose $\delta>0$ so that
+$J(u+h')\le J(u)-2\delta$ there. For $0<t<1$ convexity gives
+\begin{equation}\label{slice-saving}
+ \begin{aligned}
+ J(u+th')&\le(1-t)J(u)+tJ(u+h')\le J(u)-2\delta t,\\
+ J(S(th'))&\le J(u+th')+\operatorname{Lip}(J)\|S(th')-u-th'\|
+             \le J(u)-\delta t .
+ \end{aligned}
+\end{equation}
+Indeed, for $h'$ in a smaller ball with $\|h'\|\le R$,
+\[
+ \sup_{h'}t^{-1}\|S(th')-u-th'\|
+ \le R\sup_{0<\|k\|\le tR}
+       \frac{\|S(k)-S(0)-DS(0)k\|}{\|k\|}
+ \longrightarrow0 .
+\]
+\end{proof}
+
+\begin{lemma}[Kernel slice and change of target chart]\label{kernel-slice}
+For any complement $C$ to $W$ in terminal coordinates there is a smooth
+map $S$ on a neighborhood of $0$ in $K$, with $S(0)=u$, $DS(0)$ the
+inclusion and $G(S(k))-y\in C$. Its second differential modulo $W$ is
+the intrinsic Hessian $H$ on $K$. The quadratic Taylor coefficient in
+direction $h$ is $\tfrac12 H(h,h)$. Under a change of terminal chart
+both this tensor and the length support condition transform by the
+terminal linear isomorphism.
+\end{lemma}
+\begin{proof}
+Choose a finite-dimensional control subspace $L$ on which $A$ is an
+isomorphism onto $W$, and let $\Pi$ denote projection onto $W$ parallel
+to $C$. Solve $\Pi(G(u+k+\ell)-y)=0$ for $\ell\in L$.
+The partial derivative in $\ell$ is $A|_L$ and the partial derivative
+in $k$ vanishes, so $\ell(0)=0$, $D\ell(0)=0$. Put $S(k)=u+k+\ell(k)$.
+For the quotient map $\pi:T_yM\to T_yM/W$ and $h,k\in K$ the chain rule reads
+\begin{equation}\label{slice-hessian}
+ \begin{aligned}
+ D^2(G\circ S)(0)[h,k]&=D^2G(u)[h,k]+A D^2S(0)[h,k],\\
+ \pi D^2(G\circ S)(0)[h,k]&=\pi D^2G(u)[h,k].
+ \end{aligned}
+\end{equation}
+For $B=D\phi(y)$ the chart-change formulas are
+\[
+ \begin{aligned}
+ \ker(BA)&=K,\quad \im(BA)=BW,\quad \pi A=0,\\
+ D^2(\phi\circ G)[h,k]&=BD^2G[h,k]+D^2\phi[Ah,Ak]=BD^2G[h,k]
+                       \quad(h,k\in K),\\
+ [BD^2G[h,k]]_{BW}&=\bar B[D^2G[h,k]]_W,\qquad (pB^{-1})(BA)=pA ,
+ \end{aligned}
+\]
+where $\bar B$ is the isomorphism on the quotients.
+\end{proof}
+
+\begin{lemma}[Uniform inversion after scaling]\label{scaled-box}
+Let $F$ be smooth near $0$ in $K$, with values in $\R^d$. For integers
+$k_i\ge2$ suppose all derivatives of $F_i$ of orders $0,\ldots,k_i-1$
+vanish at zero. Write $P_i(h)=D^{k_i}F_i(0)[h^{k_i}]/k_i!$, where
+$[h^{k_i}]$ denotes $k_i$ copies of $h$. If $DP(h)$ is onto at a
+direction $h$ in an open set $O\subset K$, then for each neighborhood
+$O'\subset O$ of $h$ there are an open box $B$ about $P(h)$ and $t_0>0$
+such that, for every $0<t<t_0$ and every $a\in B$, some $h'\in O'$
+satisfies $F_i(th')=t^{k_i}a_i$ for all $i$.
+\end{lemma}
+\begin{proof}
+Choose $d$ directions defining a linear map $L:\R^d\to K$ with
+$DP(h)L$ invertible. Write $h'=h+Lz$. Taylor's integral formula extends
+$t^{-k_i}F_i(t h')$ smoothly across $t=0$ on this finite-dimensional family:
+\[
+ \frac1{(k_i-1)!}\int_0^1(1-s)^{k_i-1}
+       D^{k_i}F_i(sth')[h'^{\,k_i}]\,ds .
+\]
+At $t=0$ this is $P_i(h')$. Denote the extended vector by $H(t,z)$.
+For $\Psi(t,z)=(t,H(t,z))$,
+\[
+ D\Psi(0,0)=
+ \begin{pmatrix}1&0\\ \partial_t H(0,0)&DP(h)L\end{pmatrix}.
+\]
+The inverse theorem gives $(-t_0,t_0)\times B\subset\operatorname{dom}\Psi^{-1}$
+near $(0,P(h))$. Shrink this product so that for $(t,z)=\Psi^{-1}(t,a)$
+we have $h+Lz\in O'$. Then $F_i(t(h+Lz))=t^{k_i}a_i$ for every $i$.
+\end{proof}
+
+\begin{lemma}[Exclusion of full polars and unsupported corank one]\label{scalar}
+Outside a common null set of endpoints every singular minimizing control with
+$\rank A=4$ has a supporting covector. If $\rank A=3$, then outside a common
+null set any unsupported minimizing control satisfies
+\[
+ \rank\big(k\mapsto [D^2G(u)(h,k)]\big)<2\quad(h\in K).
+\]
+\end{lemma}
+\begin{proof}
+In rank four choose a complementary coordinate axis $e$. On a strictly
+shorter slice ray, write $G(S(th))=y+f(t)e$, $|f(t)|\le Ct^2$.
+The saving $ct$ precludes $f(t)=0$ for $0<t\le T$. Let
+$\sigma=\operatorname{sgn} f(T)$. By continuity, for $0<r<|f(T)|$,
+\[
+ \begin{aligned}
+ &\exists\,t\in(0,T]:\quad f(t)=\sigma r,\quad r\le Ct^2,\\
+ &\frac{V(y+\sigma r e)-V(y)}r\le-\frac{ct}{r}
+                         \le-\frac c{\sqrt{Cr}}\longrightarrow-\infty .
+ \end{aligned}
+\]
+For each signed axis the Dini condition is Borel by rational increments.
+Lemma~\ref{one-sided} on each parallel line gives
+$\int_{\R^4}|\{s:D^+V(w,s)=-\infty\}|\,dw=0$ in signed axis coordinates.
+Take the countable union over charts and axes.
+
+For $\rank A=3$ choose complementary axes. Put $H=\pi D^2G(u)|_{K\times K}$.
+An onto polar at $h_*$ gives
+\[
+ b_1,b_2\in K,\qquad M(v)=\det[H(v,b_1),H(v,b_2)],\qquad M(h_*)\ne0 .
+\]
+For $h_0$ in the open shorter set, $M(h_0+\lambda h_*)$ has leading
+coefficient $M(h_*)$ in degree two. Choose a sufficiently small $\lambda$
+outside its zero set, so $h=h_0+\lambda h_*$ is shorter. Now
+\[
+ Q(v)=\tfrac12 H(v,v),\quad DQ(h)b=H(h,b),\quad
+ \det[DQ(h)b_1,DQ(h)b_2]=M(h)\ne0 .
+\]
+In slice coordinates $F=G\circ S-y$ with complementary plane identified
+with the quotient. Lemmas~\ref{scaled-box} and~\ref{support} give
+\[
+ \begin{gathered}
+ \exists\, B\text{ open box},\ c>0,\ t_0>0\quad
+ \forall a\in B,\ 0<t<t_0\quad\exists h'\text{ near }h:\\
+ F(th')=t^2a,\qquad J(S(th'))\le V(y)-ct ,
+ \end{gathered}
+\]
+where $B$ is a nonempty open box in the plane. This is the $(2,2)$
+test of Lemma~\ref{planes}. Take the finite union over complementary axis
+choices in each chart and the countable union over charts. The continuity
+of $V$ used here follows from Lemma~\ref{two-point}.
+\end{proof}
+\section{Terminal brackets and the intrinsic Hessian}\label{brackets}
+\input{growth}
+For two frames $X$ and $\widetilde X=UX$, $U\in GL_m(C^\infty)$, use
+\[
+ [aX_i,bX_j]=ab[X_i,X_j]+a(X_ib)X_j-b(X_ja)X_i .
+\]
+Induction gives $D_j^{\widetilde X}\subseteq D_j^X$; using $U^{-1}$ gives equality.
+\begin{lemma}[Terminal vanishing]\label{causal}
+Let $T:L^2(0,1)\to L^2(0,1)$ be a finite-rank integral operator
+with bounded kernel $\mathbf1_{s<t}K(t,s)$, continuous on $s<t$.
+There exists $\tau<1$ such that $K(t,s)=0$ whenever $\tau<s<t<1$.
+\end{lemma}
+\begin{proof}
+Write $\mathcal H_a$ for the inputs zero almost everywhere before $a$,
+and put $R_a=T(\mathcal H_a)$. Nesting the domains gives
+$R_b\subset R_a$ for $a<b$, and causality gives $R_a\subset\mathcal H_a$.
+Choose a rational $\tau\in(0,1)$ minimizing $\dim R_\tau$ among
+rational cuts. Finite dimensionality gives $R_b=R_\tau$ for every
+rational $b\in(\tau,1)$, and hence
+\begin{equation}\label{tail-rank}
+ R_\tau\subset\bigcap_{b\in\mathbb Q\cap(\tau,1)}\mathcal H_b=\{0\}.
+\end{equation}
+For $\tau<s<t<1$, take intervals $I_\epsilon\ni s$, $J_\epsilon\ni t$
+of diameter $\le\epsilon$ with $\tau<I_\epsilon<J_\epsilon<1$. Since
+$T{\bf1}_{I_\epsilon}=0$,
+\[
+ 0=\frac{\langle{\bf1}_{J_\epsilon},T{\bf1}_{I_\epsilon}\rangle}
+          {|I_\epsilon||J_\epsilon|}
+ =\frac{\int_{J_\epsilon}\int_{I_\epsilon}K(v,w)\,dw\,dv}
+        {|I_\epsilon||J_\epsilon|}\longrightarrow K(t,s).
+\]
+\end{proof}
+
+\begin{lemma}[Terminal bracket constraints]\label{flags}
+The image $W$ contains $\Delta_y$ for every path. Suppose in addition
+that $m=2$ and the path is nonconstant. Then $D_2(y)\subset W$, and
+every covector $p$ annihilating $W$ for which $pD^2G(u)$ has finite
+rank on $K\times K$ annihilates $D_3(y)$.
+\end{lemma}
+\begin{proof}
+For $p\in W^\perp$ (the annihilator), put $p(t)=pU(T,t)$. By
+\eqref{firstvariation}, on each piece,
+\[
+ 0=pAh=\sum_i\int p(t)X_i(q(t))h_i(t)\,dt\quad(\forall h)
+ \ \Longrightarrow\ p(t)X_i(q(t))=0 .
+\]
+The coefficients are continuous, so the equality holds also at the
+terminal time. Thus $W^\perp\subseteq\Delta_y^\perp$ and $\Delta_y\subseteq W$.
+For a nonconstant loop choose $s<1$ with $\gamma(s)\ne y$.
+In a subdivision
+containing $s$, let $I_s$ insert a terminal variation by zero on the
+prefix. In the same terminal chart the endpoint germ $G_s$ of this
+suffix at its reference input $u_s$ satisfies
+\[
+ G_s(u_s+v)=G(u+I_sv),\quad
+ DG_s=DG\,I_s,\quad D^2G_s[h,k]=D^2G[I_sh,I_sk].
+\]
+In particular, with $K_s=\ker DG_s$ and $B_p=(pD^2G)|_{K\times K}$,
+\[
+ \begin{gathered}
+ \im DG_s\subset W,\qquad I_sK_s\subset K,\\
+ (pD^2G_s)|_{K_s\times K_s}=(I_s|_{K_s})^*B_p,\qquad
+ \rank (I_s|_{K_s})^*B_p\le\rank B_p .
+ \end{gathered}
+\]
+Discard stationary final pieces. On the last moving piece in unit time put
+\[
+ a=\min\{s\in[0,1]:\int_s^1|u(t)|\,dt=0\}.
+\]
+Continuity of the integral gives $a>0$, $q(a)=y$, $u=0$ a.e.\ on $[a,1]$.
+Extend variations by zero there: the varied endpoint at $a$ equals that at
+$1$, so the same kernel and rank restriction applies. Rescaling $[0,a]$ gives
+\[
+ \widehat u(t)=a\,u(at),\qquad
+ \int_\sigma^1|\widehat u(t)|\,dt=\int_{a\sigma}^a|u(t)|\,dt>0
+                  \quad(0\le\sigma<1).
+\]
+
+On a short final interval write $q$ for its initial state and $\Phi_t$
+for the reference flow from that time. For $X_u=\sum_i u_iX_i$ put
+\[
+ A_t=D\Phi_t,\qquad Y_i(t)=\Phi_t^*X_i,\qquad B(t)=\Phi_t^*[X_1,X_2].
+\]
+On compact buffered tubes the differentiated flow equations give
+$\|\partial_tD^j\Phi_t\|_\infty\le C_j\sum_i |u_i(t)|$ a.e.:
+differentiate $X_u\circ\Phi_t$ in space and use bounded lower spatial
+derivatives inductively and Gronwall for the highest one. Hence
+\[
+ \begin{aligned}
+ A_t'&=(DX_u\circ\Phi_t)A_t,\qquad (A_t^{-1})'=-A_t^{-1}(DX_u\circ\Phi_t),\\
+ \partial_t(\Phi_t^*Z)&=\partial_t\{A_t^{-1}(Z\circ\Phi_t)\}\\
+ &=A_t^{-1}\big((DZ\,X_u-DX_u\,Z)\circ\Phi_t\big)=\Phi_t^*[X_u,Z]\quad\text{a.e.}
+ \end{aligned}
+\]
+The identical calculation differentiated once in the initial
+state is justified by the bounds above on the differentiated integral
+equations. Taking $Z=X_1,X_2$ therefore gives the first spatial jets
+\[
+  (j^1Y_1)'=-u_2j^1 B,\qquad (j^1Y_2)'=u_1 j^1B .
+\]
+Here $p_0$ is the transported endpoint row at $q$. Since $p_0Y_i(t,q)=0$,
+\[
+ u_i(t)p_0B(t,q)=0\ \text{a.e.}\ (i=1,2).
+\]
+If $p_0B(1,q)\ne0$, then $|p_0B(t,q)|\ge|p_0B(1,q)|/2$ on a final
+interval, contradicting $\int_\sigma^1|u|>0$. Hence
+$p[X_1,X_2](y)=0$ for every $p\in W^\perp$, proving $D_2(y)\subseteq W$.
+
+For the third layer pass to the moving equation
+$\dot z=\sum v_i(t)Y_i(t,z)$ based at $q$, with zero reference perturbation.
+With $z(0)=q$, the change of variables is
+\[
+ \begin{aligned}
+ \frac d{dt}\Phi_t(z(t))
+ &=X_u(t,\Phi_t(z(t)))+D\Phi_t(z(t))\sum_i v_i(t)Y_i(t,z(t))\\
+ &=\sum_i(u_i(t)+v_i(t))X_i(\Phi_t(z(t))) .
+ \end{aligned}
+\]
+For the a.e.\ chain rule on a compact buffered tube, in the uniform norm,
+\[
+ \Phi_t-\Phi_s=\int_s^t X_{u(\tau)}\circ\Phi_\tau\,d\tau,\qquad
+ \|X_{u(t)}\circ\Phi_t\|_\infty\le C\sum_i|u_i(t)|.
+\]
+This Bochner integral gives time differentiation on a common full-measure
+set. Boundedness and continuity of $D\Phi_t$ then give the chain rule
+along the absolutely continuous $z(t)$. Let $F$ denote the moving endpoint,
+$\psi$ the final reference flow in terminal coordinates, and $I$ insertion of
+the terminal perturbation (zero elsewhere, with the inverse time rescaling).
+Uniqueness of solutions gives $G(u+Iv)=\psi(F(v))$ near $v=0$. Put
+$p_0=pD\psi(F(0))$. Differentiating once gives
+$I(\ker DF(0))\subset K$; twice, for $h,k\in\ker DF(0)$, gives
+\[
+ p_0D^2F(0)[h,k]=pD^2G(u)[Ih,Ik],
+\]
+since $D^2\psi[DF(0)h,DF(0)k]=0$. Pullback of a finite-rank form
+has finite rank. Thus the moving scalar Hessian has finite rank on the moving kernel.
+Put $K_0=\ker DF(0)$, choose a complement of dimension
+$r_0=\rank DF(0)$, and denote the projection to $K_0$ by $P$, $Q=I_{\rm id}-P$,
+with $I_{\rm id}$ the identity. For the full scalar Hessian $B$,
+\[
+ B=P^*BP+Q^*BP+BQ,\qquad
+ \rank B\le\rank(B|_{K_0\times K_0})+2r_0<\infty .
+\]
+
+The moving integral equation and its first variation at $v=0$ are
+\[
+ \begin{aligned}
+ z_v(t)&=q+\int_0^t\sum_i v_i(s)Y_i(s,z_v(s))\,ds,\\
+ H_h(t)&=\int_0^t\sum_j h_j(s)Y_j(s,q)\,ds .
+ \end{aligned}
+\]
+In the mixed derivative at zero a variation must hit the explicit control
+factor for a term to survive. Hitting it with $k$ leaves $D Y_i\,H_h$;
+hitting it with $h$ leaves $D Y_i\,H_k$. Pairing the time-one value with
+$p_0$ gives the scalar Hessian
+\[
+ \int_0^1\sum_i p_0DY_i(t,q)
+ \big(k_i(t)H_h(t)+h_i(t)H_k(t)\big)\,dt .
+\]
+In the block with input $j$ at $s$ and output $i$ at $t$, subtract the
+kernel $p_0DY_j(s)Y_i(t)$ on the full square. Indeed the Hessian kernel off
+the diagonal, with both fields evaluated at $q$, is
+\begin{equation}\label{kernel}
+ H_{ij}(t,s)=
+ \begin{cases}
+ p_0DY_i(t)Y_j(s), & s<t,\\
+ p_0DY_j(s)Y_i(t), & t<s .
+ \end{cases}
+\end{equation}
+In a spatial basis $(e_\ell)$ the subtracted kernel is
+\[
+ S_{ij}(t,s)=\sum_{\ell=1}^5
+       (p_0DY_j(s)e_\ell)\,Y_i^\ell(t),\qquad \rank S_{ij}\le5 .
+\]
+The block $H_{ij}$ is a restriction and projection of the finite-rank
+operator $B$. Hence
+\[
+ H_{ij}-S_{ij}={\bf1}_{s<t}\,p_0[Y_j(s),Y_i(t)],\quad
+ \rank(H_{ij}-S_{ij})\le\rank B+5 .
+\]
+Its triangular kernel is continuous off the diagonal and bounded.
+Lemma~\ref{causal} gives $\tau_{ij}<1$; take $\tau=\max_{i,j}\tau_{ij}$.
+By continuity, taking the later time to $1$ and using antisymmetry gives
+\[
+ p_0[Y_i(1),Y_j(s)]=0\qquad(\tau<s<1,\ \forall i,j).
+\]
+
+Now fix $Z=Y_i(1)$ and apply the linear functional $j^1U\mapsto p_0[Z,U]$
+to the two jet identities above. Its values on both $j^1Y_j(t)$ vanish
+throughout the final interval. Write $b_Z(t)=p_0[Z,B(t)](q)$.
+Differentiating the two zero pairings now yields, almost everywhere,
+\[
+ 0=-u_2(t)b_Z(t),\qquad 0=u_1(t)b_Z(t).
+\]
+If $b_Z(1)\ne0$, continuity supplies $\sigma<1$ such that
+$|b_Z(t)|\ge |b_Z(1)|/2$ for $\sigma<t<1$. Both controls would then
+vanish a.e.\ there, contradicting the choice of the last moving piece.
+Consequently $b_Z(1)=0$. Transporting this equality to the endpoint for
+each choice of $Z$ gives
+\[
+ p[X_1,[X_1,X_2]](y)=p[X_2,[X_1,X_2]](y)=0 .
+\]
+Together with the first two layers this proves the assertion.
+\end{proof}
+
+\begin{proposition}[The intrinsic Hessian line]\label{line}
+Outside a fixed null set, if $m=2$, $y\ne x$, $\rank A=3$, and the minimizer
+is unsupported, the image of the intrinsic Hessian spans exactly a line
+in $T_yM/W$. Its inverse image is $D_3(y)$, and its nonzero scalar component
+has infinite rank on $K$.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{flags} and \eqref{growth}, $W=D_2(y)$. Write the two
+symmetric components of the Hessian as operators $B,C:K\to K^*$.
+Set $L=\mathrm{span}\{(B(h,k),C(h,k)):h,k\in K\}$ in quotient coordinates.
+Lemma~\ref{scalar} gives $Bh\wedge Ch=0$ for every $h$.
+If $\rank B\ge2$, choose $Bh_1,Bh_2$ independent and write
+$Ch_i=\lambda_i Bh_i$. Then
+\[
+ 0=B(h_1+h_2)\wedge C(h_1+h_2)
+   =(\lambda_2-\lambda_1)Bh_1\wedge Bh_2 .
+\]
+Write $\lambda=\lambda_1=\lambda_2$. If $Bh\ne0$, choose $i$ with
+$Bh\wedge Bh_i\ne0$ and repeat the calculation to get $Ch=\lambda Bh$.
+If $Bh=0$, dependence at $h+h_i$ gives
+$Ch\in\R Bh_1\cap\R Bh_2=\{0\}$. Thus $C=\lambda B$.
+The same applies with $B,C$ interchanged.
+
+In the remaining case each nonzero row has rank one. Symmetry gives
+$B=b\,\ell\otimes\ell$, $C=c\,m_0\otimes m_0$ for nonzero rows:
+indeed $Bh=d(h)\ell$ implies $d(h)\ell(k)=d(k)\ell(h)$, so $d\propto\ell$.
+If both rows are nonzero and $\ell,m_0$ are independent, choose $h$ outside
+their two kernels. Then
+\[
+ Bh\wedge Ch=bc\,\ell(h)m_0(h)\,\ell\wedge m_0\ne0 .
+\]
+This proves $\dim L\le1$, including a zero row.
+
+Let $\pi:T_yM\to T_yM/W$. If both rows had finite rank,
+Lemma~\ref{flags} applied to the two independent quotient coordinate
+covectors would give $D_3(y)\subset W$, contrary to
+$\dim D_3(y)\ge4>3=\dim W$. Hence $\dim L=1$ and its nonzero
+component has infinite rank. For $0\ne p\in L^\perp$ in the quotient dual,
+\[
+ (p\pi)D^2G|_{K\times K}=0
+ \ \Longrightarrow\ D_3(y)\subseteq\ker(p\pi)=\pi^{-1}L,\qquad
+ \dim\pi^{-1}L=3+1=4 .
+\]
+Together with $\dim D_3(y)\ge4$ this gives $D_3(y)=\pi^{-1}L$.
+\end{proof}
+
+\section{Uniform two-point correction}\label{repair}
+\begin{lemma}[Uniform horizontal correction]\label{two-point}
+If a basis of $T_yM$ consists of values of bracket words in a local
+orthonormal frame of orders at most $r$, all pairs $z,z'$ in one
+smaller coordinate ball can be joined horizontally with length bounded by
+$C|z-z'|^{1/r}$. In particular,
+\begin{equation}\label{connector}
+ d(z,z')\le C |z-z'|^{1/r}
+\end{equation}
+with $C$ independent of both points. The pointed distance $V$ is finite
+and continuous on $M$.
+\end{lemma}
+\begin{proof}
+We give the local construction; see also Jean~\cite{jean}.
+\input{connectors}
+At each point bracket generation supplies a finite basis. Thus each
+horizontal accessibility class is open. Curves can be reversed and
+concatenated, so these classes partition $M$, which is connected.
+All points are accessible from $x$. The triangle inequality gives
+$|V(z)-V(z')|\le d(z,z')$, proving continuity by \eqref{connector}.
+\end{proof}
+
+\section{Two missing endpoint directions}\label{two}
+\begin{lemma}[Countable straightening charts]\label{straighten}
+There is a countable collection of target charts, fixed by the distribution
+and metric, with the following property. At a point satisfying
+Lemma~\ref{regular-growth}, let $W$ be a three-plane containing $\Delta_y$.
+If $m=2$ and $W=D_2(y)$ with $\dim D_3(y)=4$, one chart has a coordinate
+axis $e$ equal throughout the chart to a length-three word field with
+$e(y)\notin W$, and a second coordinate axis $f(y)\notin D_3(y)$.
+If $m=3$, one chart has an axis $e$ equal to a word field of order at
+most two with $e(y)\notin W$, and an axis $f(y)\notin W+\R e(y)$.
+\end{lemma}
+\begin{proof}
+Choose a countable frame cover $(U_\nu,X^\nu)_{\nu\in\mathbb N}$. For each
+word $|I|\le3$, second countability and the flow-box theorem give
+\[
+ U_\nu\cap\{X_I^\nu\ne0\}=\bigcup_{j\in\mathbb N}U_{\nu Ij},
+ \qquad(\chi_{\nu Ij})_*X_I^\nu=e_1 .
+\]
+This countable list precedes the choice of $W$. At a point in the statement,
+\[
+ \begin{array}{lll}
+ m=2:&D_2(y)=W\subsetneq D_3(y)
+      &\Rightarrow\ \exists |I|=3:\ X_I^\nu(y)\notin W,\\
+ m=3:&\dim W=3<\dim D_2(y)
+      &\Rightarrow\ \exists |I|\le2:\ X_I^\nu(y)\notin W .
+ \end{array}
+\]
+In the selected chart write $e=e_1$ and identify $W$ with its coordinate
+image. Since $\dim(W+\R e)=4$, some coordinate vector $f=e_k$ lies outside
+$W+\R e$. Thus $T_yM=W\oplus\R e\oplus\R f$ in these coordinates.
+\end{proof}
+
+\begin{lemma}[Quadratic and cubic alternative]\label{polynomials}
+Let $Q,P$ be homogeneous polynomials of degrees two and three on a real
+vector space $K$, given by symmetric multilinear forms. Suppose $Q$ has
+rank at least three. Either $dQ(h),dP(h)$ are independent somewhere, or
+$P$ vanishes identically.
+\end{lemma}
+\begin{proof}
+In the dependent case apply $dQ\wedge dP=0$ to the radial vector $h$
+and an arbitrary $k$. Euler's identities give
+\[
+ 0=(dQ\wedge dP)_h(h,k)=2Q(h)dP_h(k)-3P(h)dQ_h(k).
+\]
+Include any prescribed vector of $K$ in a finite-dimensional subspace
+on which $Q$ has rank at least three. Such a subspace exists by adjoining
+the vectors of a nonsingular minor of the bilinear form. On a ball in
+that subspace with $Q\ne0$,
+\[
+ d(P^2/Q^3)=\frac{P}{Q^4}\bigl(2Q\,dP-3P\,dQ\bigr)=0,
+\]
+so
+$P^2=bQ^3$ on the ball and by polynomial identity on the whole subspace.
+For linear forms $\ell_1,\ell_2$,
+\[
+ Q=\ell_1\ell_2\ \Longrightarrow\
+ D^2Q=\ell_1\otimes\ell_2+\ell_2\otimes\ell_1
+ \ \Longrightarrow\ \rank Q\le2 .
+\]
+Homogeneity therefore makes $Q$ irreducible on this finite slice.
+In its real polynomial ring, unique factorization gives
+\[
+ b\ne0\ \Longrightarrow\
+ 2\operatorname{ord}_Q(P)=\operatorname{ord}_Q(bQ^3)=3 .
+\]
+Thus $b=0$, so $P=0$ on the slice, including at the prescribed vector.
+\end{proof}
+
+\begin{proposition}[A common null set in endpoint rank three]\label{two-missing}
+Fix $x$. For $m=2$ or $3$ there is a Borel null set $N_{x,3}$
+such that, for every $y\notin N_{x,3}$ distinct from $x$, every minimizing
+control from $x$ to $y$ with endpoint derivative of rank three has a
+supporting length covector.
+\end{proposition}
+\begin{proof}
+Let $N_{\rm gr},N_{\rm scalar}$ be Borel null covers from
+Lemmas~\ref{regular-growth} and~\ref{scalar}. Use the countable index set
+\[
+ \begin{aligned}
+ \Lambda&=\{(\chi,e,f):\chi\text{ in Lemma~\ref{straighten}},\
+                  e\ne f\text{ coordinate axes}\}\\
+         &\hspace{12mm}\times\{(2,2),(2,3),(2,4)\}.
+ \end{aligned}
+\]
+For each $\lambda\in\Lambda$ take the corresponding $N_\lambda$ in
+Lemma~\ref{planes}. Thus
+\[
+ N_{x,3}=N_{\rm gr}\cup N_{\rm scalar}\cup\bigcup_{\lambda\in\Lambda}N_\lambda,
+ \qquad \mu(N_{x,3})\le0+0+\sum_{\lambda\in\Lambda}0=0 .
+\]
+Fix $y\notin N_{x,3}$, $y\ne x$ and an unsupported minimizer with $\rank A=3$.
+Lemma~\ref{kernel-slice} transports the support condition and Hessian to
+the selected chart.
+
+For $m=2$, Proposition~\ref{line} and Lemma~\ref{straighten} give
+\[
+ W=D_2(y),\quad D_3(y)=W\oplus\R e,\quad T_yM=W\oplus\R e\oplus\R f .
+\]
+On the slice write $G(S(k))-y=F_1(k)e+F_2(k)f$. Then
+\[
+ F_i(0)=0,\quad DF_i(0)=0,\quad \rank D^2F_1(0)=\infty,\quad D^2F_2(0)=0 .
+\]
+Taylor expansion on finite-dimensional direction families gives, locally
+uniformly in $h$,
+\begin{equation}\label{jet-scales}
+ \begin{aligned}
+ F_1(th)&=t^2Q(h)+O(t^3), & Q(h)&=\tfrac12 D^2F_1(0)[h,h],\\
+ F_2(th)&=t^3P(h)+O(t^4), & P(h)&=\tfrac16 D^3F_2(0)[h,h,h].
+ \end{aligned}
+\end{equation}
+
+If the rows are independent at $h_*$, choose $b_1,b_2$ with
+\[
+ M(v)=\det
+ \begin{pmatrix}dQ_v b_1&dQ_v b_2\\ dP_v b_1&dP_v b_2\end{pmatrix},
+ \qquad M(h_*)\ne0 .
+\]
+For any strictly shorter direction $h_0$ the polynomial
+$M(h_0+\lambda h_*)$ has leading coefficient $M(h_*)$ at degree three.
+Hence some arbitrarily small $\lambda$ gives $M(h_0+\lambda h_*)\ne0$.
+Take such $h$ in the open shorter set. Lemmas~\ref{scaled-box}
+and~\ref{support} give one open rectangle $U$ and $c,t_0>0$ with
+\[
+ \begin{aligned}
+ &\forall (a,b)\in U,\ 0<t<t_0\quad\exists h'\text{ near }h:\\
+ &(F_1(th'),F_2(th'))=(t^2a,t^3b),\\
+ &V(y+t^2ae+t^3bf)\le J(S(th'))\le V(y)-ct .
+ \end{aligned}
+\]
+This is precisely the $(2,3)$ test of Lemma~\ref{planes}.
+
+Otherwise $P=0$ everywhere by Lemma~\ref{polynomials}, since
+Proposition~\ref{line} gives infinite rank for $Q$.
+
+Choose a strictly shorter $h$ with $dQ(h)b_1\ne0$ for some $b_1$;
+the open shorter set cannot lie in the radical of $Q$. For $a$ near
+$Q(h)$ the scaled implicit function theorem solves
+$F_1(t(h+\lambda b_1))=t^2a$ smoothly for $\lambda(t,a)$.
+Put $v_a=h+\lambda(0,a)b_1$ and $C(a)=D^4F_2(0)[v_a,v_a,v_a,v_a]/24$.
+To obtain a remainder uniform in $a$, take a compact interval $I$
+about $Q(h)$ inside the implicit-function neighborhood and put
+$v(t,a)=h+\lambda(t,a)b_1$. The derivatives of $F_2$ through order
+three vanish at zero on this slice. Integral Taylor expansion gives
+\[
+ \frac{F_2(tv(t,a))}{t^4}
+ =\frac1{3!}\int_0^1(1-s)^3
+ D^4F_2(stv(t,a))[v(t,a)^4]\,ds ,
+\]
+Here $[v^4]$ denotes four copies of $v$. Uniform continuity on
+$[0,1]\times[0,t_0]\times I$ gives the estimate
+\[
+ \begin{aligned}
+ &\sup_{a\in I}|t^{-4}F_2(tv(t,a))-C(a)|\\
+ &\quad\le\tfrac1{24}\sup_{\substack{a\in I\\0\le s\le1}}
+ \big|D^4F_2(stv(t,a))[v(t,a)^4]-D^4F_2(0)[v_a^4]\big|
+ \longrightarrow0 .
+ \end{aligned}
+\]
+Here $(3!)^{-1}\int_0^1(1-s)^3\,ds=1/24$. Thus
+\begin{equation}\label{fourth-output}
+ F_2(t(h+\lambda(t,a)b_1))=t^4(C(a)+r_t(a)),\qquad
+ \sup_{a\in I}|r_t(a)|\longrightarrow 0 .
+\end{equation}
+Let $z_t$ be this endpoint, let $z'_t=y+t^2ae+t^4bf$, and denote
+the constant in \eqref{connector} for $r=4$ by $K_0$. The coordinate
+vector $f$ has unit Euclidean norm. The two bounds on cost are
+\begin{align}
+ V(z_t)&\le V(y)-c_0t, \label{fourth-saving}\\
+ d(z_t,z'_t)&\le K_0\,t\,|b-C(a)-r_t(a)|^{1/4}. \label{fourth-cost}
+\end{align}
+Choose $\rho>0$ with $K_0(3\rho)^{1/4}\le c_0/2$. Shrink $I$ until
+$|C(a)-C(Q(h))|<\rho$ throughout. Choose $|b-C(Q(h))|<\rho$ and then
+$t$ small enough for $\sup_I|r_t|<\rho$. Adding
+\eqref{fourth-saving} and \eqref{fourth-cost} gives, throughout the rectangle,
+\begin{equation}\label{box24}
+ V(y+t^2ae+t^4bf)\le V(z_t)+d(z_t,z'_t)\le V(y)-\tfrac12 c_0t .
+\end{equation}
+This calculation also applies when $C(Q(h))=0$.
+
+In both alternatives the constructed rectangle places $y$ in the set of
+Lemma~\ref{planes}, contrary to $y\notin N_{x,3}$. The axes are those of
+Lemma~\ref{straighten} even if the minimizing control was written using
+different frames. Only the rectangle and its constants depend on that control.
+
+For $m=3$, $\rank A=3$, use Lemmas~\ref{regular-growth} and~\ref{straighten}:
+\[
+ \Delta_y=W,\quad \dim D_2(y)\ge4,\quad D_3(y)=T_yM,\quad
+ T_yM=W\oplus\R e\oplus\R f .
+\]
+Here $e$ is a straightened word of order at most two outside $W$.
+For order two apply the signed word from Lemma~\ref{two-point} with
+time $\sqrt{|s|}$, using the inverse word for $s<0$.
+If $w_s$ is the endpoint of this word from $z$ and $V_0$ is a
+smaller coordinate ball, smoothness of the word on its buffered chart
+gives constants $A_0,B_0$ uniform for $z\in V_0$. Using
+\eqref{connector} with $r=3$ gives
+\[
+ \begin{aligned}
+ |w_s-(z+se)|&\le B_0|s|^{3/2},\qquad d(z,w_s)\le A_0|s|^{1/2},\\
+ d(z,z+se)&\le A_0|s|^{1/2}+K_0'(B_0|s|^{3/2})^{1/3}\\
+           &=(A_0+K_0'B_0^{1/3})|s|^{1/2}.
+ \end{aligned}
+\]
+For an order-one
+field its flow gives the exact translation at cost $|s|$.
+
+A shorter slice ray ends at $y+F(t)e+H(t)f$ with length at most $V(y)-ct$.
+Both functions start with zero value and derivative. If $H''(0)=0$, the
+quotients $F(t)/t^2,H(t)/t^3$ converge. For $(a,b)$ in a sufficiently
+small box around their limits, move to $y+t^2ae+t^3bf$ by first using
+the pure $e$ displacement and then \eqref{connector} on the remainder.
+With constants $C_2,C_3$ uniform in the starting point, the cost divided
+by $t$ is bounded by
+\[
+ C_2|a-F(t)/t^2|^{1/2}+C_3|b-H(t)/t^3|^{1/3}.
+\]
+Choose a box of radius $\eta$ about the limits with
+$C_2(2\eta)^{1/2}+C_3(2\eta)^{1/3}<c/2$, then take $t$ small enough
+that both quotients are within $\eta$ of their limits.
+The length bound after both corrections is therefore $V(y)-ct/2$.
+
+If $H''(0)\ne0$, write $\alpha=F''(0)/2$, $\beta=H''(0)/2$ and put
+$s=t\theta$. Taylor expansion uniformly for $1/2\le\theta\le3/2$ gives
+\[
+ t^{-2}F(t\theta)=\alpha\theta^2+o(1),\qquad
+ t^{-2}H(t\theta)=\beta\theta^2+o(1).
+\]
+First choose $\delta>0$ with $C_2\sqrt{3\delta}<c/4$, then choose
+$0<\epsilon<1/2$ with $|\alpha| (2\epsilon+\epsilon^2)<\delta$.
+Put $\theta_\pm=1\pm\epsilon$ and
+\[
+ \rho=\tfrac12\min_{\pm}|\beta\theta_\pm^2-\beta|>0 .
+\]
+Choose $t$ small enough that the two uniform errors above are less than
+$\delta$ and $\rho$, respectively. Since $\beta\theta_-^2$ and
+$\beta\theta_+^2$ lie on opposite sides of $\beta$, continuity gives
+\[
+ \forall b\in(\beta-\rho,\beta+\rho)\ \exists\theta\in[\theta_-,\theta_+]:
+ \quad H(t\theta)=t^2b .
+\]
+For every such $\theta$ and $|a-\alpha|<\delta$ we have
+\[
+ |a-t^{-2}F(t\theta)|
+ \le |a-\alpha|+|\alpha(1-\theta^2)|
+      +|\alpha\theta^2-t^{-2}F(t\theta)|<3\delta .
+\]
+Thus for $z=y+F(t\theta)e+H(t\theta)f$ and $z'=y+t^2ae+t^2bf$,
+\[
+ \begin{aligned}
+ d(z,z')&\le C_2t|a-t^{-2}F(t\theta)|^{1/2}<ct/4,\\
+ V(z')&\le V(z)+d(z,z')\le V(y)-ct\theta+ct/4
+          \le V(y)-ct/4 .
+ \end{aligned}
+\]
+The intervals for $a,b$ were fixed before $t$, giving the $(2,2)$ box.
+Lemma~\ref{planes} again puts $y$ in $N_{x,3}$, a contradiction.
+This exhausts the two horizontal ranks in the proposition.
+\end{proof}
+
+\section{Critical normal parameters and completion of the proof}
+\begin{lemma}[Supported singular paths give critical normal parameters]\label{normal}
+Endpoints of supported singular minimizers from $x$ form a set of zero
+smooth outer volume.
+\end{lemma}
+\begin{proof}
+Write the consecutive normalized pieces on $[0,T]$. Transport a supporting
+row $\eta$ backwards by $\dot p=-\sum_i u_i p DX_i$, taking the cotangent
+transition at each joint. Variation of constants in the state equation
+gives $\eta Av=\int_0^T a\cdot v$ with $a_i(t)=p(t)X_i(q(t))$.
+With $\nu=|u|$, the two tests $v=0,2u$ give
+\[
+ 0\ge J(u)-\eta Au,\qquad 2J(u)\ge J(u)+\eta Au
+ \quad\Longrightarrow\quad \eta Au=J(u).
+\]
+Consequently $\int a\cdot v\le\int|v|$ for all $v$. Put
+$B=\{|a|>1\}$ and take $v={\bf1}_B\,a/|a|$ (zero off $B$). Then
+$\int_B(|a|-1)\le0$, so $|B|=0$.
+The support equality and the pointwise norm bound now give
+\begin{equation}\label{deficit}
+ \int_0^T (|u|-a\cdot u)\,dt=J(u)-\eta Au=0,\qquad
+ |u|-a\cdot u\ge0\quad\text{a.e.}
+\end{equation}
+Where $u\ne0$, equality forces $a=u/|u|$ by Cauchy--Schwarz. Hence
+$u=\nu a$ almost everywhere for $\nu=|u|$, including at pauses. Consequently
+\[
+  (\dot q,\dot p)=\nu(t)\vec H(q,p),\qquad
+  H(q,p)=\tfrac12\sum_i\big(pX_i(q)\big)^2 .
+\]
+In a frame the Hamilton equations read
+\[
+ \partial_p H=\sum_i a_iX_i,\qquad
+ -\partial_q H=-\sum_i a_i p DX_i,\qquad
+ \sum_i a_i^2=\|a\|^2 .
+\]
+The last expression is invariant under orthogonal frame changes. For
+$L=\int_0^T\nu=0$, $q(t)=x$. For $L>0$ put
+$\sigma(t)=L^{-1}\int_0^t\nu$, $\xi_0=Lp(0)$, and
+$S_L(q,p)=(q,Lp)$. Quadratic homogeneity gives
+\[
+ \vec H(S_L(q,p))=L\,DS_L\,\vec H(q,p).
+\]
+Thus the following equality holds by uniqueness of the integral equation
+on successive coordinate intervals, also on intervals where $\sigma'=0$:
+\[
+ S_L(q(t),p(t))=\Phi_H^{\sigma(t)}(x,\xi_0),\qquad
+ \sigma(0)=0,\quad \sigma(T)=1 .
+\]
+Here the orbit extends along the range $[0,1]$ of the clock: up to any
+putative first finite escape time the orbit agrees with the compact
+reference curve; the local continuation theorem then extends it.
+Write $P(\xi)=\pi_M\Phi_H^1(x,\xi)$ on its open domain in $T_x^*M$.
+For nearby $\xi$, let $(q^\xi,p^\xi)$ be the orbit and keep the same clock.
+In each of the original charts use controls
+\[
+   v_i(\xi,t)=\frac{\nu(t)}{L}p^\xi(\sigma(t))X_i(q^\xi(\sigma(t))).
+\]
+Let $b_i(\xi,s)=p^\xi(s)X_i(q^\xi(s))$ on the compact clock interval of
+each piece. On a smaller parameter ball its first two parameter derivatives
+are bounded. Taylor's formula gives, with a uniform constant over the pieces,
+\[
+ \begin{aligned}
+ Dv_i(\xi)[h](t)&=\sigma'(t)D_\xi b_i(\xi,\sigma(t))[h],\\
+ \|v(\xi+h)-v(\xi)-Dv(\xi)[h]\|_{\mathcal U}
+       &\le C\|\sigma'\|_2 |h|^2,\qquad v(\xi_0)=u .
+ \end{aligned}
+\]
+By uniqueness on each consecutive piece the nodes match. In terminal
+coordinates this gives
+\[
+ P=G\circ v,\qquad DP(\xi_0)=DG(u)Dv(\xi_0),\qquad
+ \rank DP(\xi_0)\le\rank DG(u)<5 .
+\]
+On the open time-one domain in $T_x^*M$, classical Sard gives
+\[
+ \mu^*(P(\operatorname{Crit}P))=0,\qquad \mu^*(\{x\})=0 .
+\]
+These two sets cover all supported singular minimizing endpoints at $x$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Fix $x$ and let $\Sigma_x$ denote the endpoint set in the statement.
+Choose Borel null covers $N_{\rm gr}$ of the growth exception in
+Lemma~\ref{regular-growth} and $N_{x,4}$ of the corank-one exception
+in Lemma~\ref{scalar}, using a countable measuring atlas. Take
+$N_{x,3}$ from Proposition~\ref{two-missing} when $m=2,3$ and the
+empty set when $m=4$. Let $P_x$ be the normal time-one endpoint map
+of Lemma~\ref{normal} and let $\operatorname{Crit}P_x$ denote its critical
+parameters in its open domain. We claim the set inclusion
+\begin{equation}\label{final-inclusion}
+ \Sigma_x\subset \{x\}\cup N_{\rm gr}\cup N_{x,4}\cup N_{x,3}
+                  \cup P_x(\operatorname{Crit}P_x).
+\end{equation}
+Take a witness $u$ for $y\in\Sigma_x$ outside the first four sets.
+Write $r=\rank DG(u)<5$. For $m=1$, $[aX,bX]=(aXb-bXa)X$ contradicts
+bracket generation. For $m=2,3,4$, Lemmas~\ref{flags} and~\ref{regular-growth} give
+\[
+ \begin{array}{c|c|c}
+ m & \text{lower bound for }r &\text{remaining }r\\ \hline
+ 2 & r\ge\dim D_2(y)=3 &3,4\\
+ 3 & r\ge\dim\Delta_y=3&3,4\\
+ 4 & r\ge\dim\Delta_y=4&4 .
+ \end{array}
+\]
+By Lemma~\ref{scalar} when $r=4$ and Proposition~\ref{two-missing} when $r=3$,
+\[
+ \left.
+ \begin{array}{l}
+ r=4,\ y\notin N_{x,4}\\[-2pt]
+ \text{or }r=3,\ y\notin N_{x,3}
+ \end{array}\right\}
+ \Longrightarrow\mathcal S(u)
+ \overset{\text{Lemma~\ref{normal} (proof)},\,y\ne x}{\Longrightarrow}
+ y\in P_x(\operatorname{Crit}P_x).
+\]
+This proves \eqref{final-inclusion}. Smooth coordinate densities and a
+countable chart cover carry the coordinate Sard null set to a $\mu$-null set.
+By outer subadditivity,
+\[
+ \mu^*(\Sigma_x)\le\mu^*(\{x\})+\mu(N_{\rm gr})+\mu(N_{x,4})
+          +\mu(N_{x,3})+\mu^*(P_x(\operatorname{Crit}P_x))=0 .
+\]
+\end{proof}
+
+\section*{Formal proof and provenance}
+The manuscript and Lean development were prepared with AI assistance.
+The target in \texttt{FiveDimensionalMinimizingSard.lean} is
+\begin{center}\small\ttfamily five\_dimensional\_metric\_minimizing\_sard\end{center}
+The formal path derivative is the native manifold derivative. In geometric
+notation its data include
+\[
+ \begin{gathered}
+ E_x(\gamma)=\gamma(1),\qquad
+ \text{singular}\iff D_\gamma E_x\text{ is not onto},\\
+ g_{ij}:y\mapsto g_y(X_i(y),X_j(y)),\qquad g_{ij}\in C^\infty,\\
+ \mu(\chi^{-1}B)=\int_B\rho_\chi\,dz\quad(B\text{ Borel in the chart}),\\
+ L(\gamma)=\int|\dot\gamma|_g,\qquad d(x,y)=\inf_{E_x(\beta)=y}L(\beta).
+ \end{gathered}
+\]
+For the wider intermediate statements, the corresponding scopes are
+\[
+ \begin{array}{c|l|l}
+  &\text{paper}&\text{formal application}\\ \hline
+ \text{Lemma~\ref{box}} & d<\infty,\ k_i>1 &d=2,\ k_i\in\mathbb N,\ k_i\ge2\\
+ \text{Lemma~\ref{planes}} & k,l>1&\R^3\times\R^2,\ k,l\in\mathbb N_{\ge2}\\
+ \text{Lemma~\ref{scaled-box}} &d<\infty,\ k_i\in\mathbb N_{\ge2}
+       &(2,2),(2,3),\ \text{scalar inversion}\\
+ \text{Lemma~\ref{flags}} & m=2,\ \gamma\text{ nonconstant}
+       &m=2,\ x\ne y\quad(D_3)\\
+ \text{Lemma~\ref{two-point}} &1\le r<\infty &1\le r\le4
+ \end{array}
+\]
+The fixed-prefix formula in Lemma~\ref{flags} covers nonconstant loops.
+The archive includes the module and declaration references in the formula
+audit, the source hashes, and the replay instructions in the ancillary README.
+The frozen run records $150$ modules, $2602$ checked safe declarations,
+and $5$ skipped recursive auxiliary implementations.
+
+\begin{thebibliography}{9}
+\bibitem{strong}
+A. Belotto da Silva, A. Figalli, A. Parusi\'nski and L. Rifford,
+Strong Sard conjecture and regularity of singular minimizing geodesics
+for analytic sub-Riemannian structures in dimension 3,
+\emph{Invent. Math.} \textbf{229} (2022), 395--448.
+\href{https://doi.org/10.1007/s00222-022-01111-2}{doi:10.1007/s00222-022-01111-2}.
+\bibitem{jean}
+F. Jean, Uniform estimation of sub-Riemannian balls,
+\emph{J. Dynam. Control Systems} \textbf{7} (2001), 473--500.
+\href{https://doi.org/10.1023/A:1013154500463}{doi:10.1023/A:1013154500463}.
+\bibitem{rifford}
+L. Rifford, Subdifferentials and minimizing Sard conjecture in sub-Riemannian
+geometry, \emph{J. \'{E}c. polytech. Math.} \textbf{10} (2023), 1195--1244.
+\href{https://doi.org/10.5802/jep.242}{doi:10.5802/jep.242}.
+\end{thebibliography}
+\end{document}

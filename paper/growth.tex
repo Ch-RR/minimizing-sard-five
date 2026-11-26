@@ -1,0 +1,56 @@
+Let $D_j$ denote the pointwise span of brackets of length at most
+$j$ in any local smooth frame.
+\begin{lemma}[Growth outside a common null set]\label{regular-growth}
+There is a Borel null set outside which, for every $j\ge1$ with
+$D_j(y)\ne T_yM$, one has $\dim D_{j+1}(y)>\dim D_j(y)$.
+Consequently $m=2$ implies $\dim D_2=3$, $\dim D_3\ge4$, $D_4=TM$
+there; and $m=3$ implies $\dim D_2\ge4$, $D_3=TM$ there.
+\end{lemma}
+\begin{proof}
+Fix $j$, $r<5$ and a subchart with independent words
+$B_1,\ldots,B_r$ of orders $\le j$. Complete them to a smooth frame
+$(B_a)_{a=1}^5$. On this subchart let
+\[
+ E=\{z:\dim D_j(z)=\dim D_{j+1}(z)=r\},\qquad
+ X_I=\sum_{a=1}^5 b_{I,a}B_a .
+\]
+Then $b_{I,a}|_E=0$ for $a>r$ and $|I|\le j+1$. For a smooth $b$ vanishing
+on $E$, a nonzero $Db(y)$ at a density point $y\in E$ would give a cone of
+directions $\omega$ of positive solid angle and some $\epsilon>0$ with
+\[
+ |b(y+s\omega)|\ge \epsilon s\quad(0<s<s_0).
+\]
+Such a cone contradicts density one. Applying this argument to each partial
+derivative on the preceding full-measure subset gives, by countable intersection,
+\[
+ \partial^\alpha b_{I,a}(y)=0\quad
+ (|\alpha|\ge0,\ |I|\le j+1,\ a>r),\qquad\text{a.e. }y\in E .
+\]
+At one such $y$, let $\mathcal F_y$ be the ideal of flat smooth germs and
+$\mathcal V$ the module of all vector field germs. Set
+\[
+ \mathcal L=\sum_{a\le r} C^\infty_y B_a+\mathcal F_y\mathcal V.
+\]
+The preceding identities imply $X_i,[X_i,B_a]\in\mathcal L$ for $a\le r$.
+The product rule gives
+\[
+ [X_i,fB_a]=(X_i f)B_a+f[X_i,B_a],\quad
+ X_i\mathcal F_y\subseteq\mathcal F_y,\quad
+ [X_i,\mathcal L]\subseteq\mathcal L .
+\]
+Induction gives all brackets nested with a generator; Jacobi and bilinearity
+express every bracket word as a linear combination of such brackets. Hence
+\[
+ T_yM=\bigcup_nD_n(y)\subseteq\mathcal L(y)
+       =\mathrm{span}\{B_a(y):a\le r\},\qquad 5\le r ,
+\]
+a contradiction. The rank sets are Borel (smooth minors); countably many
+$j,r$, frame charts and choices of words cover the exceptions.
+Thus for rank two in dimension five, outside a fixed null set,
+\[
+       \dim D_2=3,\qquad \dim D_3\ge4,\qquad D_4=TM.       \tag{G}\label{growth}
+\]
+The equality for $D_2$ uses that there is only one first bracket.
+At $m=3$ strict growth from dimension three gives $\dim D_2\ge4$
+and $D_3=TM$. Enlarge the countable union of exceptions to a Borel null set.
+\end{proof}
